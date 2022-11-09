@@ -63,7 +63,7 @@ public class UserDAO {
             Users u = new Users();
             u.setId(c.getString(c.getColumnIndex("id")));
             u.setName(c.getString(c.getColumnIndex("name")));
-            u.setDate(c.getString(c.getColumnIndex("date")));
+            u.setDate(c.getInt(c.getColumnIndex("date")));
             u.setAddress(c.getString(c.getColumnIndex("address")));
             u.setCCCD(c.getString(c.getColumnIndex("cccd")));
             u.setPasswork(c.getString(c.getColumnIndex("passwork")));
