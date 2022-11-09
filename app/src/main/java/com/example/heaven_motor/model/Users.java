@@ -3,14 +3,14 @@ package com.example.heaven_motor.model;
 public class Users {
     private String id;
     private String name;
-    private int date;
+    private String date;
     private String CCCD;
     private String address;
     private String passwork;
     public Users() {
     }
 
-    public Users(String id, String name, int date, String CCCD, String address, String passwork) {
+    public Users(String id, String name, String date, String CCCD, String address, String passwork) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -19,11 +19,11 @@ public class Users {
         this.passwork = passwork;
     }
 
-    public int getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(int date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
