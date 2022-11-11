@@ -1,5 +1,6 @@
 package com.example.heaven_motor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -7,42 +8,50 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.heaven_motor.Sign_Up.Chao_Sign_Up_MainActivity;
 import com.example.heaven_motor.database.UserDAO;
 import com.example.heaven_motor.model.Users;
 
 public class Login_MainActivity2 extends AppCompatActivity {
     EditText UserName,Pass;
-    Button Login,Cancel;
+    Button Login;
     CheckBox checkBox;
     Users users;
     UserDAO userDAO;
+    TextView tvTaoTK;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_main2);
 
         userDAO = new UserDAO(this);
-        if (userDAO.checkTKdau() == 1){
+        UserName = findViewById(R.id.edUserName);
+        Pass = findViewById(R.id.edPassword);
+        checkBox = findViewById(R.id.checkBox);
+        Login = findViewById(R.id.btnLogin);
+        tvTaoTK = findViewById(R.id.tvTaoTK);
+
+
+
+        if (userDAO.checkTKdau() > 0){
             users = new Users();
             users.setId("Admin");
             users.setName("Nguyễn Văn A");
             users.setDate(18);
+            users.setPhone("0365552583");
             users.setAddress("Hà Nội");
             users.setCCCD("0351582258");
             users.setPasswork("Admin");
 
             userDAO.insert(users);
-        }
 
-        UserName = findViewById(R.id.edUserName);
-        Pass = findViewById(R.id.edPassword);
-        checkBox = findViewById(R.id.checkBox);
-        Login = findViewById(R.id.btnLogin);
-        Cancel = findViewById(R.id.btnCancel);
+        }
 
 
         SharedPreferences preferences =  getSharedPreferences("user_file",MODE_PRIVATE);
@@ -51,24 +60,24 @@ public class Login_MainActivity2 extends AppCompatActivity {
         checkBox.setChecked(preferences.getBoolean("REMEBER",false));
 
 
-        Cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                UserName.setText("");
-                Pass.setText("");
-                checkBox.setChecked(false);
-            }
-        });
+
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkLogin();
             }
         });
-
+        tvTaoTK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),Chao_Sign_Up_MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
     private void checkLogin() {
+
         String strUsername = UserName.getText().toString();
         String strPass = Pass.getText().toString();
         if (strUsername.isEmpty()|| strPass.isEmpty()){
@@ -111,6 +120,9 @@ public class Login_MainActivity2 extends AppCompatActivity {
             Pass.setText(mPass);
             checkBox.setChecked(mBoo);
         }
+        Intent intent = getIntent();
+        UserName.setText(intent.getStringExtra("edTenDN"));
+        Pass.setText(intent.getStringExtra("edPassword"));
         super.onStart();
     }
 }

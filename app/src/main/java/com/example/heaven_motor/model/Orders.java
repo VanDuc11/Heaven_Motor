@@ -10,6 +10,7 @@ public class Orders {
     private int total;
     private int phatsinh;
 
+
     public Orders() {
     }
 

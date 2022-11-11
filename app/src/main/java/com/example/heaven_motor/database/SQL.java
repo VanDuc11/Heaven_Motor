@@ -7,13 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class SQL extends SQLiteOpenHelper {
-    public  static final  String Table_Users = "CREATE TABLE Users" +
-            "(id text PRIMARY KEY " +
-            ",name text," +
-            "date integer," +
-            "address text," +
-            "cccd text," +
-            "passwork text);";
+    public  static final  String Table_Users = "CREATE TABLE Users(id text PRIMARY KEY ,name text,passwork text,phone text,date integer,address text,cccd text);";
 
     public  static final String Table_Categories = "CREATE TABLE Categories " +
             "(id integer PRIMARY KEY AUTOINCREMENT," +
