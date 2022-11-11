@@ -15,22 +15,23 @@ import com.example.heaven_motor.database.UserDAO;
 import com.example.heaven_motor.model.Users;
 
 public class Login_MainActivity2 extends AppCompatActivity {
-    EditText UserName,Pass;
-    Button Login,Cancel;
+    EditText UserName, Pass;
+    Button Login, Cancel;
     CheckBox checkBox;
     Users users;
     UserDAO userDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_main2);
 
         userDAO = new UserDAO(this);
-        if (userDAO.checkTKdau() == 1){
+        if (userDAO.checkTKdau() == 1) {
             users = new Users();
             users.setId("Admin");
             users.setName("Nguyễn Văn A");
-            users.setDate(18);
+            users.setDate("18");
             users.setAddress("Hà Nội");
             users.setCCCD("0351582258");
             users.setPasswork("Admin");
@@ -45,10 +46,10 @@ public class Login_MainActivity2 extends AppCompatActivity {
         Cancel = findViewById(R.id.btnCancel);
 
 
-        SharedPreferences preferences =  getSharedPreferences("user_file",MODE_PRIVATE);
-        UserName.setText(preferences.getString("USERNAME",""));
-        Pass.setText(preferences.getString("PASSWORD",""));
-        checkBox.setChecked(preferences.getBoolean("REMEBER",false));
+        SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        UserName.setText(preferences.getString("USERNAME", ""));
+        Pass.setText(preferences.getString("PASSWORD", ""));
+        checkBox.setChecked(preferences.getBoolean("REMEBER", false));
 
 
         Cancel.setOnClickListener(new View.OnClickListener() {
@@ -68,33 +69,35 @@ public class Login_MainActivity2 extends AppCompatActivity {
 
 
     }
+
     private void checkLogin() {
         String strUsername = UserName.getText().toString();
         String strPass = Pass.getText().toString();
-        if (strUsername.isEmpty()|| strPass.isEmpty()){
+        if (strUsername.isEmpty() || strPass.isEmpty()) {
             Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không được để trống!", Toast.LENGTH_SHORT).show();
-        }else {
-            if (userDAO.checkLogin(strUsername,strPass)>0){
+        } else {
+            if (userDAO.checkLogin(strUsername, strPass) > 0) {
                 Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                remeberUser(strUsername,strPass,checkBox.isChecked());
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.putExtra("user",strUsername);
+                remeberUser(strUsername, strPass, checkBox.isChecked());
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.putExtra("user", strUsername);
                 startActivity(intent);
                 finish();
-            }else {
+            } else {
                 Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
             }
         }
     }
-    public void remeberUser(String u, String p ,boolean stastus){
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file",MODE_PRIVATE);
+
+    public void remeberUser(String u, String p, boolean stastus) {
+        SharedPreferences sharedPreferences = getSharedPreferences("user_file", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        if (!stastus){
+        if (!stastus) {
             editor.clear();
-        }else {
-            editor.putString("USERNAME",u);
-            editor.putString("PASSWORD",p);
-            editor.putBoolean("REMEBER",stastus);
+        } else {
+            editor.putString("USERNAME", u);
+            editor.putString("PASSWORD", p);
+            editor.putBoolean("REMEBER", stastus);
         }
         // lưu lại toàn bộ
         editor.commit();
@@ -102,11 +105,11 @@ public class Login_MainActivity2 extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        SharedPreferences preferences = getSharedPreferences("user_file",MODE_PRIVATE);
-        String mUser = preferences.getString("USERNAME",String.valueOf(false));
-        String mPass = preferences.getString("PASSWORD",String.valueOf(false));
-        Boolean mBoo = preferences.getBoolean("REMEBER",false);
-        if (mBoo){
+        SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        String mUser = preferences.getString("USERNAME", String.valueOf(false));
+        String mPass = preferences.getString("PASSWORD", String.valueOf(false));
+        Boolean mBoo = preferences.getBoolean("REMEBER", false);
+        if (mBoo) {
             UserName.setText(mUser);
             Pass.setText(mPass);
             checkBox.setChecked(mBoo);
