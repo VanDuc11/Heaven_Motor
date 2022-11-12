@@ -25,6 +25,7 @@ public class UserDAO {
         values.put("id",u.getId());
         values.put("name",u.getName());
         values.put("date",u.getDate());
+        values.put("phone",u.getPhone());
         values.put("address",u.getAddress());
         values.put("cccd",u.getCCCD());
         values.put("passwork",u.getPasswork());
@@ -39,6 +40,7 @@ public class UserDAO {
         values.put("id",u.getId());
         values.put("name",u.getName());
         values.put("date",u.getDate());
+        values.put("phone",u.getPhone());
         values.put("address",u.getAddress());
         values.put("cccd",u.getCCCD());
         values.put("passwork",u.getPasswork());
@@ -64,6 +66,7 @@ public class UserDAO {
             u.setId(c.getString(c.getColumnIndex("id")));
             u.setName(c.getString(c.getColumnIndex("name")));
             u.setDate(c.getInt(c.getColumnIndex("date")));
+            u.setAddress(c.getString(c.getColumnIndex("phone")));
             u.setAddress(c.getString(c.getColumnIndex("address")));
             u.setCCCD(c.getString(c.getColumnIndex("cccd")));
             u.setPasswork(c.getString(c.getColumnIndex("passwork")));

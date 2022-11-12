@@ -2,21 +2,31 @@ package com.example.heaven_motor.model;
 
 public class Users {
     private String id;
+    private String passwork;
     private String name;
     private int date;
+    private String phone;
     private String CCCD;
     private String address;
-    private String passwork;
     public Users() {
     }
 
-    public Users(String id, String name, int date, String CCCD, String address, String passwork) {
+    public Users(String id, String name, int date, String phone, String CCCD, String address, String passwork) {
         this.id = id;
         this.name = name;
         this.date = date;
+        this.phone = phone;
         this.CCCD = CCCD;
         this.address = address;
         this.passwork = passwork;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public int getDate() {
