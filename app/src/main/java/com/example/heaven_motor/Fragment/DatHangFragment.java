@@ -1,18 +1,18 @@
 package com.example.heaven_motor.Fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.heaven_motor.R;
 
 public class DatHangFragment extends Fragment {
-
 
     public DatHangFragment() {
         // Required empty public constructor
@@ -32,7 +32,7 @@ public class DatHangFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_quan_li_dat_hang, container, false);
+        return inflater.inflate(R.layout.fragment_dat_hang, container, false);
     }
 
     @Override

@@ -1,24 +1,22 @@
 package com.example.heaven_motor.Fragment;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
 import com.example.heaven_motor.R;
 
-
 public class QuanLiLoaiXeFragment extends Fragment {
-
 
     public QuanLiLoaiXeFragment() {
         // Required empty public constructor
     }
-
     public static QuanLiLoaiXeFragment newInstance() {
         QuanLiLoaiXeFragment fragment = new QuanLiLoaiXeFragment();
         return fragment;

@@ -1,70 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     tools:context=".Fragment.DoiMatKhauFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ImageView
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@drawable/ic_baseline_screen_lock_portrait_24"
-        android:layout_marginTop="20dp"/>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
-        <EditText
-            android:id="@+id/mkcu"
-            android:layout_marginTop="40dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Nhập mật khẩu cũ"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
-        <EditText
-            android:id="@+id/mkmoi"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Nhập mật khẩu mới"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
-        <EditText
-            android:id="@+id/mkxacnhan"
-            android:layout_marginTop="20dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="Nhập lại mật khẩu mới"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/xacnhan"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
-            android:text="Xác nhận"/>
-        <Button
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/huy"
-            android:layout_marginLeft="40dp"
-            android:text="Hủy"/>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
-</LinearLayout>
+</FrameLayout>

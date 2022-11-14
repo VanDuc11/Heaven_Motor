@@ -20,7 +20,7 @@ import com.example.heaven_motor.Fragment.QuanLiLoaiXeFragment;
 import com.example.heaven_motor.Fragment.QuanLiNguoiDungFragment;
 import com.example.heaven_motor.Fragment.QuanLiXeFragment;
 import com.example.heaven_motor.Fragment.TopXeFragment;
-import com.example.heaven_motor.adapter.ViewpageAdapter;
+import com.example.heaven_motor.adapter.ViewPagerAdapter;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     ViewPager pager;
-    ViewpageAdapter adapter;
+    ViewPagerAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
     public void addFragment(ViewPager viewPager){
-        adapter = new ViewpageAdapter(getSupportFragmentManager());
+        adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new QuanLiLoaiXeFragment(),"Quản lí loại xe");
         adapter.addFragment(new QuanLiXeFragment(),"Quản lí xe");
         adapter.addFragment(new QuanLiDonHangFragment(),"Quản lí đơn hàng");
