@@ -39,8 +39,6 @@ public class Login_MainActivity2 extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         tvTaoTK = findViewById(R.id.tvTaoTK);
 
-
-
         if (userDAO.checkTKdau() > 0){
             users = new Users();
             users.setId("Admin");
@@ -49,19 +47,13 @@ public class Login_MainActivity2 extends AppCompatActivity {
             users.setAddress("Hà Nội");
             users.setCCCD("0351582258");
             users.setPasswork("Admin");
-
             userDAO.insert(users);
 
         }
-
-
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         UserName.setText(preferences.getString("USERNAME", ""));
         Pass.setText(preferences.getString("PASSWORD", ""));
         checkBox.setChecked(preferences.getBoolean("REMEBER", false));
-
-
-
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
