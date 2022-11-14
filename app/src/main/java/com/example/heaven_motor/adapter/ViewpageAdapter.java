@@ -9,15 +9,15 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewpageAdapter extends FragmentPagerAdapter {
     List<Fragment> fragmentList = new ArrayList<>();
     List<String > listTile = new ArrayList<>();
 
-    public ViewPagerAdapter(@NonNull FragmentManager fm) {
+    public ViewpageAdapter (FragmentManager fm){
         super(fm);
     }
 
-
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         return fragmentList.get(position);
@@ -33,7 +33,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return fragmentList.size();
     }
-
     public void addFragment(Fragment fragment,String tile){
         fragmentList.add(fragment);
         listTile.add(tile);

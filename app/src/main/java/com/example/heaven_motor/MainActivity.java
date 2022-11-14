@@ -11,16 +11,16 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.heaven_motor.Fragment.DatHangFragment;
-import com.example.heaven_motor.Fragment.DoanhThuFragment;
-import com.example.heaven_motor.Fragment.DoiMatKhauFragment;
-import com.example.heaven_motor.Fragment.LichSuDonHangFragment;
-import com.example.heaven_motor.Fragment.QuanLiDonHangFragment;
-import com.example.heaven_motor.Fragment.QuanLiLoaiXeFragment;
-import com.example.heaven_motor.Fragment.QuanLiNguoiDungFragment;
-import com.example.heaven_motor.Fragment.QuanLiXeFragment;
-import com.example.heaven_motor.Fragment.TopXeFragment;
-import com.example.heaven_motor.adapter.ViewPagerAdapter;
+import com.example.heaven_motor.adapter.ViewpageAdapter;
+import com.example.heaven_motor.fragment.DatHang_Fragment;
+import com.example.heaven_motor.fragment.DoanhThu_Fragment;
+import com.example.heaven_motor.fragment.Doi_Mat_Khau_Fragment;
+import com.example.heaven_motor.fragment.LSDonHang_Fragment;
+import com.example.heaven_motor.fragment.QLyLoaiXe_Fragment;
+import com.example.heaven_motor.fragment.QLyNguoi_Dung_Fragment;
+import com.example.heaven_motor.fragment.QLyXe_Fragment;
+import com.example.heaven_motor.fragment.QlyDonHang_Fragment;
+import com.example.heaven_motor.fragment.TopMuon_Fragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     Toolbar toolbar;
     NavigationView navigationView;
     ViewPager pager;
-    ViewPagerAdapter adapter;
+    ViewpageAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,53 +60,45 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setTitle("Quản lí loại xe");
 
         }else if(id==R.id.QLX){
-//            replaceFragement(QuanLiXeFragment.newInstance());
             pager.setAdapter(adapter);
             pager.setCurrentItem(1);
             toolbar.setTitle("Quản lí xe");
         }
         else if(id==R.id.QLDH){
-//            replaceFragement(QuanLiDonHangFragment.newInstance());
             pager.setAdapter(adapter);
             pager.setCurrentItem(2);
             toolbar.setTitle("Quản lí đơn hàng");
 
         }
         else if(id==R.id.DatHang){
-//            replaceFragement(DatHangFragment.newInstance());
             toolbar.setTitle("Đặt hàng");
             pager.setAdapter(adapter);
             pager.setCurrentItem(3);
         }else if(id==R.id.LSDH){
-//            replaceFragement(LichSuDonHangFragment.newInstance());
             toolbar.setTitle("Những đơn đã đặt");
             pager.setAdapter(adapter);
             pager.setCurrentItem(4);
 
         }else if(id==R.id.topXe){
-//            replaceFragement(TopXeFragment.newInstance());
             toolbar.setTitle("Top xe được thuê nhiều nhất");
             pager.setAdapter(adapter);
             pager.setCurrentItem(5);
         } else if(id==R.id.doanhThu){
-//           replaceFragement(DoanhThuFragment.newInstance());
             toolbar.setTitle("Doanh thu");
             pager.setAdapter(adapter);
             pager.setCurrentItem(6);
         }
         else if(id==R.id.QLND){
-//            replaceFragement(QuanLiNguoiDungFragment.newInstance());
             toolbar.setTitle("Quản lí người dùng");
             pager.setAdapter(adapter);
             pager.setCurrentItem(7);
         }
         else if(id==R.id.doiPass){
-//            replaceFragement(DoiMatKhauFragment.newInstance());
             toolbar.setTitle("Đổi mật khẩu");
             pager.setAdapter(adapter);
             pager.setCurrentItem(8);
         }
-        else{
+        else if (id == R.id.dangXuat ){
             startActivity(new Intent(MainActivity.this, Splash_screen_MainActivity2.class));
 
         }
@@ -114,16 +106,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
     public void addFragment(ViewPager viewPager){
-        adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new QuanLiLoaiXeFragment(),"Quản lí loại xe");
-        adapter.addFragment(new QuanLiXeFragment(),"Quản lí xe");
-        adapter.addFragment(new QuanLiDonHangFragment(),"Quản lí đơn hàng");
-        adapter.addFragment(new DatHangFragment(),"Đặt hàng");
-        adapter.addFragment(new LichSuDonHangFragment(),"Những đơn đã đặt");
-        adapter.addFragment(new TopXeFragment(),"Top xe được thuê nhiều nhất");
-        adapter.addFragment(new DoanhThuFragment(),"Doanh thu");
-        adapter.addFragment(new QuanLiNguoiDungFragment(),"Quản lí người dùng");
-        adapter.addFragment(new DoiMatKhauFragment(),"Đổi mật khẩu");
+        adapter = new ViewpageAdapter(getSupportFragmentManager());
+        adapter.addFragment(new QLyLoaiXe_Fragment(),"Quản lý loại xe");
+        adapter.addFragment(new QLyXe_Fragment(),"Quản lý xe");
+        adapter.addFragment(new QlyDonHang_Fragment(),"Quản lý đơn hàng");
+        adapter.addFragment(new DatHang_Fragment(),"Đặt hàng");
+        adapter.addFragment(new LSDonHang_Fragment(),"Những đơn đã đặt");
+        adapter.addFragment(new TopMuon_Fragment(),"Top xe được thuê nhiều nhất");
+        adapter.addFragment(new DoanhThu_Fragment(),"Doanh thu");
+        adapter.addFragment(new QLyNguoi_Dung_Fragment(),"Quản lý người dùng");
+        adapter.addFragment(new Doi_Mat_Khau_Fragment(),"Đổi mật khẩu");
         pager.setAdapter(adapter);
 
     }
