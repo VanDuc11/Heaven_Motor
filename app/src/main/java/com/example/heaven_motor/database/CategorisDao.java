@@ -25,7 +25,7 @@ public class CategorisDao {
         ContentValues values = new ContentValues();
         values.put("id",c.getId());
         values.put("name",c.getName());
-        values.put("cave",c.getCave());
+        values.put("brand",c.getCave());
 
         long kq = db.insert("Categoris",null,values);
         if (kq <= 0){
@@ -37,7 +37,7 @@ public class CategorisDao {
         ContentValues values = new ContentValues();
         values.put("id",c.getId());
         values.put("name",c.getName());
-        values.put("cave",c.getCave());
+        values.put("brand",c.getCave());
 
 
         long kq = db.update("Categoris",values,"id=?",new String[]{String.valueOf(c.getId())});
@@ -57,7 +57,7 @@ public class CategorisDao {
             Categoris cg = new Categoris();
             cg.setId(c.getInt(c.getColumnIndex("id")));
             cg.setName(c.getString(c.getColumnIndex("name")));
-            cg.setCave(c.getString(c.getColumnIndex("cave")));
+            cg.setCave(c.getString(c.getColumnIndex("brand")));
 
             list.add(cg);
         }
