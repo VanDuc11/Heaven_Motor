@@ -1,66 +1,178 @@
 package com.example.heaven_motor.fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.heaven_motor.R;
+import com.example.heaven_motor.adapter.CategrisAdapter;
+import com.example.heaven_motor.database.CategorisDao;
+import com.example.heaven_motor.model.Categoris;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QLyLoaiXe_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class QLyLoaiXe_Fragment extends Fragment {
+    RecyclerView recyclerView;
+    Button btnThem, btnThem2,btnCancel;
+    Dialog dialog;
+    EditText edMaloai,edTenloai,edHangxe;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public QLyLoaiXe_Fragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QLyLoaiXeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QLyLoaiXe_Fragment newInstance(String param1, String param2) {
-        QLyLoaiXe_Fragment fragment = new QLyLoaiXe_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    List<Categoris> list;
+    Categoris c;
+    CategorisDao dao;
+    CategrisAdapter adapter;
+    LinearLayoutManager linearLayoutManager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_q_ly_loai_xe, container, false);
+        View v = inflater.inflate(R.layout.fragment_q_ly_loai_xe, container, false);
+        dao = new CategorisDao(getContext());
+        btnThem = v.findViewById(R.id.fragLoaiXe_btnLoaixe);
+        recyclerView = v.findViewById(R.id.fragLoaiXe_recy);
+        btnThem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                 OpenDialogInsert();
+
+            }
+        });
+        return v;
+    }
+    public void OpenDialogInsert(){
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialog_add_lx, null);
+        dialog = new Dialog(getContext());
+        dialog.setContentView(view);
+
+        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
+        edTenloai = dialog.findViewById(R.id.dialog_add_lx_edTenloai);
+        edHangxe = dialog.findViewById(R.id.dialog_add_lx_edHangxe);
+        btnThem2 = dialog.findViewById(R.id.dialog_add_lx_btnThem);
+        btnCancel  = dialog.findViewById(R.id.dialog_add_lx_btnCancel);
+
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        // set kích thước dialog
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        // set vị trí dialog
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+//        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+        btnThem2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                c = new Categoris();
+                c.setId(Integer.parseInt(edMaloai.getText().toString()));
+                c.setName(edTenloai.getText().toString());
+                c.setBrand(edHangxe.getText().toString());
+
+                int kq = dao.Insert(c);
+
+                    if (Validate()<0){
+                        Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
+                    }else {
+                        if (kq > 0) {
+                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+
+                        }else {
+                            Toast.makeText(getContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                    loadData();
+                    dialog.dismiss();
+
+            }
+        });
+        dialog.show();
+    }
+
+
+    public void loadData(){
+        list = (ArrayList<Categoris>) dao.getAll();
+        linearLayoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(linearLayoutManager);
+        adapter = new CategrisAdapter(getContext(),this,list);
+        recyclerView.setAdapter(adapter);
+
+    }
+    public int Validate(){
+        int check = 1;
+        if (edMaloai.getText().length() == 0|| edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+            check = -1;
+        }
+        return check;
+    }
+    public void delete(String position){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("Thông báo!");
+        builder.setMessage("Bạn có muốn xóa không?");
+        builder.setIcon(R.drawable.delete_forever_24);
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                int i = dao.delete(position);
+                if (i<0) {
+                    Toast.makeText(getContext(), "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                }else {
+                    loadData();
+                    dialog.cancel();
+                    Toast.makeText(getContext(), "Xóa Thành công", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        builder.show();
+
+    }
+
+    @Override
+    public void onStart() {
+        loadData();
+        super.onStart();
+
+    }
+
+    @Override
+    public void onResume() {
+        onStart();
+        super.onResume();
     }
 }

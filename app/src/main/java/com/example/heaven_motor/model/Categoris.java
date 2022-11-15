@@ -3,23 +3,19 @@ package com.example.heaven_motor.model;
 public class Categoris {
     private int id;
     private String name;
-    private String cave;
+    private String brand;
 
     public Categoris() {
     }
 
-    public Categoris(int id, String name, String cave) {
+    public Categoris(int id, String name, String brand) {
         this.id = id;
         this.name = name;
-        this.cave = cave;
+        this.brand = brand;
     }
 
-    public String getCave() {
-        return cave;
-    }
-
-    public void setCave(String cave) {
-        this.cave = cave;
+    public String getBrand() {
+        return brand;
     }
 
     public int getId() {
@@ -36,5 +32,9 @@ public class Categoris {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 }
