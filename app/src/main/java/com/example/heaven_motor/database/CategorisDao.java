@@ -23,6 +23,7 @@ public class CategorisDao {
 
     public int insert(Categoris c){
         ContentValues values = new ContentValues();
+
         values.put("name",c.getName());
         values.put("brand",c.getBrand());
 
@@ -34,6 +35,7 @@ public class CategorisDao {
     }
     public int Update(Categoris c){
         ContentValues values = new ContentValues();
+
         values.put("name",c.getName());
         values.put("brand",c.getBrand());
 
