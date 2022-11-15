@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import com.example.heaven_motor.database.CategorisDao;
 import com.example.heaven_motor.model.Categoris;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class QLyLoaiXe_Fragment extends Fragment {
@@ -36,7 +34,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     Dialog dialog;
     EditText edMaloai,edTenloai,edHangxe;
 
-    List<Categoris> list;
+    ArrayList<Categoris> list;
     Categoris c;
     CategorisDao dao;
     CategrisAdapter adapter;
@@ -65,7 +63,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
         dialog = new Dialog(getContext());
         dialog.setContentView(view);
 
-        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
+//        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
         edTenloai = dialog.findViewById(R.id.dialog_add_lx_edTenloai);
         edHangxe = dialog.findViewById(R.id.dialog_add_lx_edHangxe);
         btnThem2 = dialog.findViewById(R.id.dialog_add_lx_btnThem);
@@ -90,11 +88,13 @@ public class QLyLoaiXe_Fragment extends Fragment {
             }
         });
 
+
+
         btnThem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 c = new Categoris();
-                c.setId(Integer.parseInt(edMaloai.getText().toString()));
+//                c.setId(Integer.parseInt(edMaloai.getText().toString()));
                 c.setName(edTenloai.getText().toString());
                 c.setBrand(edHangxe.getText().toString());
 
@@ -129,7 +129,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     }
     public int Validate(){
         int check = 1;
-        if (edMaloai.getText().length() == 0|| edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+        if (edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
             check = -1;
         }
         return check;
