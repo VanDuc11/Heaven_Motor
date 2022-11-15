@@ -65,7 +65,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
         dialog = new Dialog(getContext());
         dialog.setContentView(view);
 
-        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
+//        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
         edTenloai = dialog.findViewById(R.id.dialog_add_lx_edTenloai);
         edHangxe = dialog.findViewById(R.id.dialog_add_lx_edHangxe);
         btnThem2 = dialog.findViewById(R.id.dialog_add_lx_btnThem);
@@ -94,11 +94,11 @@ public class QLyLoaiXe_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 c = new Categoris();
-                c.setId(Integer.parseInt(edMaloai.getText().toString()));
+//                c.setId(Integer.parseInt(edMaloai.getText().toString()));
                 c.setName(edTenloai.getText().toString());
                 c.setBrand(edHangxe.getText().toString());
 
-                int kq = dao.Insert(c);
+                int kq = dao.insert(c);
 
                     if (Validate()<0){
                         Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -129,7 +129,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     }
     public int Validate(){
         int check = 1;
-        if (edMaloai.getText().length() == 0|| edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+        if ( edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
             check = -1;
         }
         return check;
