@@ -21,9 +21,9 @@ public class CategorisDao {
         db = sqlite.getWritableDatabase();
     }
 
-    public int Insert(Categoris c){
+    public int insert(Categoris c){
         ContentValues values = new ContentValues();
-//        values.put("id",c.getId());
+
         values.put("name",c.getName());
         values.put("brand",c.getBrand());
 
@@ -35,7 +35,7 @@ public class CategorisDao {
     }
     public int Update(Categoris c){
         ContentValues values = new ContentValues();
-//        values.put("id",c.getId());
+
         values.put("name",c.getName());
         values.put("brand",c.getBrand());
 
@@ -55,7 +55,7 @@ public class CategorisDao {
         Cursor c = db.rawQuery(sql,selectionArgs);
         while (c.moveToNext()){
             Categoris cg = new Categoris();
-            cg.setId(c.getInt(c.getColumnIndex("id")));
+            cg.setId(Integer.parseInt(c.getString(c.getColumnIndex("id"))));
             cg.setName(c.getString(c.getColumnIndex("name")));
             cg.setBrand(c.getString(c.getColumnIndex("brand")));
 

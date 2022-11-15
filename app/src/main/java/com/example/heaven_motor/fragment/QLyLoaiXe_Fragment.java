@@ -98,7 +98,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
                 c.setName(edTenloai.getText().toString());
                 c.setBrand(edHangxe.getText().toString());
 
-                int kq = dao.Insert(c);
+                int kq = dao.insert(c);
 
                     if (Validate()<0){
                         Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -129,7 +129,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     }
     public int Validate(){
         int check = 1;
-        if (edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+        if ( edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
             check = -1;
         }
         return check;
