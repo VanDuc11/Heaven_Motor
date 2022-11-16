@@ -11,7 +11,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +26,6 @@ import com.example.heaven_motor.database.CategorisDao;
 import com.example.heaven_motor.model.Categoris;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class QLyLoaiXe_Fragment extends Fragment {
@@ -36,7 +34,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     Dialog dialog;
     EditText edMaloai,edTenloai,edHangxe;
 
-    List<Categoris> list;
+    ArrayList<Categoris> list;
     Categoris c;
     CategorisDao dao;
     CategrisAdapter adapter;
@@ -87,6 +85,8 @@ public class QLyLoaiXe_Fragment extends Fragment {
                 dialog.dismiss();
             }
         });
+
+
 
         btnThem2.setOnClickListener(new View.OnClickListener() {
             @Override

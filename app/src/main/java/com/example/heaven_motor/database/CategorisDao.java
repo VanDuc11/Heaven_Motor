@@ -23,6 +23,7 @@ public class CategorisDao {
 
     public int insert(Categoris c){
         ContentValues values = new ContentValues();
+
         values.put("name",c.getName());
         long kq = db.insert("Categories",null,values);
         if (kq <= 0){
@@ -32,6 +33,7 @@ public class CategorisDao {
     }
     public int Update(Categoris c){
         ContentValues values = new ContentValues();
+
         values.put("name",c.getName());
 
         long kq = db.update("Categories",values,"id=?",new String[]{String.valueOf(c.getId())});
