@@ -24,8 +24,6 @@ public class CategorisDao {
     public int insert(Categoris c){
         ContentValues values = new ContentValues();
         values.put("name",c.getName());
-        values.put("brand",c.getBrand());
-
         long kq = db.insert("Categories",null,values);
         if (kq <= 0){
             return -1;
@@ -35,8 +33,6 @@ public class CategorisDao {
     public int Update(Categoris c){
         ContentValues values = new ContentValues();
         values.put("name",c.getName());
-        values.put("brand",c.getBrand());
-
 
         long kq = db.update("Categories",values,"id=?",new String[]{String.valueOf(c.getId())});
         if (kq <= 0){
@@ -55,8 +51,6 @@ public class CategorisDao {
             Categoris cg = new Categoris();
             cg.setId(Integer.parseInt(c.getString(c.getColumnIndex("id"))));
             cg.setName(c.getString(c.getColumnIndex("name")));
-            cg.setBrand(c.getString(c.getColumnIndex("brand")));
-
             list.add(cg);
         }
         return list;
@@ -70,5 +64,13 @@ public class CategorisDao {
     public List<Categoris> getAll(){
         String sql ="SELECT * FROM Categories";
         return getData(sql);
+    }
+    public List<String> getAllTenLoai(){
+        List<String> tenLoaiXe =new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT name FROM Categories",null);
+        while (c.moveToNext()){
+            tenLoaiXe.add(c.getString(0));
+        }
+        return tenLoaiXe;
     }
 }

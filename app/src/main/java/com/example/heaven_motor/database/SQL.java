@@ -18,17 +18,19 @@ public class SQL extends SQLiteOpenHelper {
 
     public  static final String Table_Categories = "CREATE TABLE Categories " +
             "(id integer PRIMARY KEY AUTOINCREMENT," +
-            "name text," +
-            "brand text);" ;
+            "name text);" ;
 
 
     public static final String Table_Vehicle="CREATE TABLE Vehicle" +
             "(id text PRIMARY KEY," +
             "categorie_id integer REFERENCES Categories(id)," +
+            "name text," +
+            "imager blob," +
+            "BKS text," +
             "capacity integer," +
             "status integer," +
-            "amount integer," +
-            "price integer);";
+            "price integer," +
+            "year integer);";
 
 
     public static final String Table_Orders= "CREATE TABLE Orders" +
