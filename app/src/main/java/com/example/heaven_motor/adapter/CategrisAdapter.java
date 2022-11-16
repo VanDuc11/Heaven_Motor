@@ -34,7 +34,7 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
     QLyLoaiXe_Fragment fragment;
     List<Categoris> list;
     Button btnUpdate;
-    EditText edMaloai,edTenloai,edHangxe;
+    EditText edMaloai,edTenloai;
     CategorisDao dao;
     public CategrisAdapter(Context context, QLyLoaiXe_Fragment fragment, List<Categoris> list){
         this.context = context;
@@ -53,7 +53,6 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
 
         holder.tvMaLoai.setText("Mã Loại: "+ list.get(position).getId());
         holder.tvTenloai.setText("Tên Loại: "+list.get(position).getName());
-        holder.tvHangXe.setText("Hãng Xe: " + list.get(position).getBrand());
         holder.imgDel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +74,6 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
 
         edMaloai = v.findViewById(R.id.dialog_update_lx_edmaLoai);
         edTenloai = v.findViewById(R.id.dialog_update_lx_edTenloai);
-        edHangxe = v.findViewById(R.id.dialog_update_lx_edHangxe);
         btnUpdate = v.findViewById(R.id.dialog_update_lx_btnUpdate);
 
         Window window = dialog.getWindow();
@@ -93,14 +91,11 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
         edMaloai.setEnabled(false);
         edMaloai.setText(String.valueOf(c.getId()));
         edTenloai.setText(c.getName());
-        edHangxe.setText(c.getBrand());
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dao = new CategorisDao(context);
                 c.setName(edTenloai.getText().toString());
-                c.setBrand(edHangxe.getText().toString());
-
                 int kq = dao.Update(c);
 
                 if (Validate()<0){
@@ -127,20 +122,19 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
         return list.size();
     }
     public static class CategoriViewHoder extends RecyclerView.ViewHolder{
-        TextView tvMaLoai,tvTenloai,tvHangXe;
+        TextView tvMaLoai,tvTenloai;
         ImageView imgUpdate,imgDel;
         public CategoriViewHoder(@NonNull View v) {
             super(v);
             tvMaLoai = v.findViewById(R.id.item_row_tvMaLoai);
             tvTenloai = v.findViewById(R.id.item_row_tvTenloai);
-            tvHangXe = v.findViewById(R.id.item_row_tvHangxe);
             imgUpdate = v.findViewById(R.id.item_row_imgUpdate);
             imgDel = v.findViewById(R.id.item_row_imgDelete);
         }
     }
     public int Validate(){
         int check = 1;
-        if (edMaloai.getText().length() == 0|| edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+        if (edMaloai.getText().length() == 0|| edTenloai.getText().length()==0){
             check = -1;
         }
         return check;
