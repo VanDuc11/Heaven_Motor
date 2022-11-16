@@ -32,14 +32,11 @@ public class Login_MainActivity2 extends AppCompatActivity {
         setContentView(R.layout.activity_login_main2);
 
         userDAO = new UserDAO(this);
-        //ducdvph19780_Sign_out
         UserName = findViewById(R.id.edUserName);
         Pass = findViewById(R.id.edPassword);
         checkBox = findViewById(R.id.checkBox);
         Login = findViewById(R.id.btnLogin);
         tvTaoTK = findViewById(R.id.tvTaoTK);
-
-
 
         if (userDAO.checkTKdau() > 0){
             users = new Users();
@@ -49,19 +46,14 @@ public class Login_MainActivity2 extends AppCompatActivity {
             users.setAddress("Hà Nội");
             users.setCCCD("0351582258");
             users.setPasswork("Admin");
-
             userDAO.insert(users);
 
         }
-
 
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         UserName.setText(preferences.getString("USERNAME", ""));
         Pass.setText(preferences.getString("PASSWORD", ""));
         checkBox.setChecked(preferences.getBoolean("REMEBER", false));
-
-
-
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +67,7 @@ public class Login_MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 
@@ -123,9 +116,7 @@ public class Login_MainActivity2 extends AppCompatActivity {
             Pass.setText(mPass);
             checkBox.setChecked(mBoo);
         }
-        Intent intent = getIntent();
-        UserName.setText(intent.getStringExtra("edTenDN"));
-        Pass.setText(intent.getStringExtra("edPassword"));
         super.onStart();
     }
+
 }
