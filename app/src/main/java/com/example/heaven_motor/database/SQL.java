@@ -7,15 +7,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class SQL extends SQLiteOpenHelper {
-    public  static final  String Table_Users = "CREATE TABLE Users(id text PRIMARY KEY ,name text,passwork text,phone text,date integer,address text,cccd text);";
+    public static final String Table_Users = "CREATE TABLE Users" +
+            "(id text PRIMARY KEY ," +
+            "name text," +
+            "passwork text," +
+            "phone text," +
+            "date integer," +
+            "address text," +
+            "cccd text);";
 
-    public  static final String Table_Categories = "CREATE TABLE Categories " +
+    public static final String Table_Categories = "CREATE TABLE Categories " +
             "(id integer PRIMARY KEY AUTOINCREMENT," +
             "name text," +
-            "cave text);" ;
+            "cave text);";
 
 
-    public static final String Table_Vehicle="CREATE TABLE Vehicle" +
+    public static final String Table_Vehicle = "CREATE TABLE Vehicle" +
             "(id text PRIMARY KEY," +
             "categorie_id integer REFERENCES Categories(id)," +
             "capacity integer," +
@@ -24,7 +31,7 @@ public class SQL extends SQLiteOpenHelper {
             "price integer);";
 
 
-    public static final String Table_Orders= "CREATE TABLE Orders" +
+    public static final String Table_Orders = "CREATE TABLE Orders" +
             "(id text PRIMARY KEY ," +
             "user_id text REFERENCES Users(id)," +
             "vehicle_id text REFERENCES Vehicle(id)," +
@@ -33,8 +40,6 @@ public class SQL extends SQLiteOpenHelper {
             "status integer," +
             " total integer," +
             "phatsinh integer);";
-
-
 
 
     public SQL(@Nullable Context context) {
