@@ -4,27 +4,36 @@ public class Vehicle {
     private String  id;
     private int categorie_id;
     private String name;
-    private int imager;
     private String BKS;
     private int capacity;
+    private String brand;
     private int status;
-    private int amount;
     private int price;
     private int year;
+    private byte[] img;
+
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
     public Vehicle() {
     }
 
-    public Vehicle(String id, int categorie_id, String name, int imager, String BKS, int capacity, int status, int amount, int price, int year) {
+    public Vehicle(String id, int categorie_id, String name, String BKS, int capacity, String brand, int status, int price, int year, byte[] img) {
         this.id = id;
         this.categorie_id = categorie_id;
         this.name = name;
-        this.imager = imager;
         this.BKS = BKS;
         this.capacity = capacity;
+        this.brand = brand;
         this.status = status;
-        this.amount = amount;
         this.price = price;
         this.year = year;
+        this.img = img;
     }
 
     public int getYear() {
@@ -41,14 +50,6 @@ public class Vehicle {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getImager() {
-        return imager;
-    }
-
-    public void setImager(int imager) {
-        this.imager = imager;
     }
 
     public String getBKS() {
@@ -83,20 +84,20 @@ public class Vehicle {
         this.capacity = capacity;
     }
 
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
     public int getStatus() {
         return status;
     }
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 
     public int getPrice() {
