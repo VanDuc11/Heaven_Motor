@@ -38,22 +38,11 @@ public class Login_MainActivity2 extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         tvTaoTK = findViewById(R.id.tvTaoTK);
 
-        if (userDAO.checkTKdau() > 0){
-            users = new Users();
-            users.setId("Admin");
-            users.setName("Nguyễn Văn A");
-            users.setDate(18);
-            users.setAddress("Hà Nội");
-            users.setCCCD("0351582258");
-            users.setPasswork("Admin");
-            userDAO.insert(users);
 
-        }
-
-        SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         UserName.setText(preferences.getString("USERNAME", ""));
         Pass.setText(preferences.getString("PASSWORD", ""));
-        checkBox.setChecked(preferences.getBoolean("REMEBER", false));
+        checkBox.setChecked(preferences.getBoolean("REMEMBER", false));
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,14 +81,14 @@ public class Login_MainActivity2 extends AppCompatActivity {
     }
 
     public void remeberUser(String u, String p, boolean stastus) {
-        SharedPreferences sharedPreferences = getSharedPreferences("user_file", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         if (!stastus) {
             editor.clear();
         } else {
             editor.putString("USERNAME", u);
             editor.putString("PASSWORD", p);
-            editor.putBoolean("REMEBER", stastus);
+            editor.putBoolean("REMEMBER", stastus);
         }
         // lưu lại toàn bộ
         editor.commit();
@@ -110,7 +99,7 @@ public class Login_MainActivity2 extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("user_file", MODE_PRIVATE);
         String mUser = preferences.getString("USERNAME", String.valueOf(false));
         String mPass = preferences.getString("PASSWORD", String.valueOf(false));
-        Boolean mBoo = preferences.getBoolean("REMEBER", false);
+        Boolean mBoo = preferences.getBoolean("REMEMBER", false);
         if (mBoo) {
             UserName.setText(mUser);
             Pass.setText(mPass);
