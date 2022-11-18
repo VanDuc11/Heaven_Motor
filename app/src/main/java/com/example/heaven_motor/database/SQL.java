@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class SQL extends SQLiteOpenHelper {
 
 
-    public  static final  String Table_Users = "CREATE TABLE Users" +
+    public static final String Table_Users = "CREATE TABLE Users" +
             "(id text PRIMARY KEY ," +
             "name text," +
             "passwork text," +
@@ -21,8 +21,7 @@ public class SQL extends SQLiteOpenHelper {
     public static final String Table_Categories = "CREATE TABLE Categories " +
             "(id integer PRIMARY KEY AUTOINCREMENT," +
             "name text," +
-            "brand text);" ;
-
+            "brand text);";
 
 
     public static final String Table_Vehicle = "CREATE TABLE Vehicle" +
@@ -55,6 +54,10 @@ public class SQL extends SQLiteOpenHelper {
         db.execSQL(Table_Categories);
         db.execSQL(Table_Vehicle);
         db.execSQL(Table_Orders);
+
+        //inser data
+
+        db.execSQL(Data_SQL.INSERT_User);
     }
 
     @Override
