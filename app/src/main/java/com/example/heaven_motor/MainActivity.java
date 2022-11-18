@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             pager.setCurrentItem(8);
         }
         else if (id == R.id.dangXuat ){
-            startActivity(new Intent(MainActivity.this, Splash_screen_MainActivity2.class));
+            startActivity(new Intent(MainActivity.this, Login_MainActivity2.class));
 
         }
         drawerLayout.closeDrawer(navigationView);
