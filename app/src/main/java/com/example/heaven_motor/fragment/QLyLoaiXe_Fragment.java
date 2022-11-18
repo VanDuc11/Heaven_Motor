@@ -63,9 +63,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
         dialog = new Dialog(getContext());
         dialog.setContentView(view);
 
-//        edMaloai = dialog.findViewById(R.id.dialog_add_lx_edMaloai);
         edTenloai = dialog.findViewById(R.id.dialog_add_lx_edTenloai);
-        edHangxe = dialog.findViewById(R.id.dialog_add_lx_edHangxe);
         btnThem2 = dialog.findViewById(R.id.dialog_add_lx_btnThem);
         btnCancel  = dialog.findViewById(R.id.dialog_add_lx_btnCancel);
 
@@ -94,10 +92,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 c = new Categoris();
-//                c.setId(Integer.parseInt(edMaloai.getText().toString()));
                 c.setName(edTenloai.getText().toString());
-                c.setBrand(edHangxe.getText().toString());
-
                 int kq = dao.insert(c);
 
                     if (Validate()<0){
@@ -129,7 +124,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
     }
     public int Validate(){
         int check = 1;
-        if ( edTenloai.getText().length()==0|| edHangxe.getText().length()==0){
+        if ( edTenloai.getText().length()==0){
             check = -1;
         }
         return check;

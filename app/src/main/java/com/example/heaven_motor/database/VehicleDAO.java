@@ -24,10 +24,14 @@ public class VehicleDAO {
         ContentValues values = new ContentValues();
         values.put("id",v.getId());
         values.put("categorie_id",v.getCategorie_id());
+        values.put("name",v.getName());
+        values.put("imager",v.getImager());
+        values.put("BKS",v.getBKS());
         values.put("capacity",v.getCapacity());
         values.put("status",v.getStatus());
         values.put("amount",v.getAmount());
         values.put("price",v.getPrice());
+        values.put("year",v.getYear());
 
         long kq = db.insert("Vehicle",null,values);
         if (kq <= 0){
@@ -39,10 +43,14 @@ public class VehicleDAO {
         ContentValues values = new ContentValues();
         values.put("id",v.getId());
         values.put("categorie_id",v.getCategorie_id());
+        values.put("name",v.getName());
+        values.put("imager",v.getImager());
+        values.put("BKS",v.getBKS());
         values.put("capacity",v.getCapacity());
         values.put("status",v.getStatus());
         values.put("amount",v.getAmount());
         values.put("price",v.getPrice());
+        values.put("year",v.getYear());
 
         long kq = db.update("Vehicle",values,"id=?",new String[]{String.valueOf(v.getId())});
         if (kq <= 0){
@@ -63,10 +71,14 @@ public class VehicleDAO {
             Vehicle v = new Vehicle();
             v.setId((c.getString(c.getColumnIndex("id"))));
             v.setCategorie_id(c.getInt(c.getColumnIndex("categorie_id")));
+            v.setName(c.getString(c.getColumnIndex("name")));
+            v.setImager(c.getInt(c.getColumnIndex("imager")));
+            v.setBKS(c.getString(c.getColumnIndex("BKS")));
             v.setCapacity(c.getInt(c.getColumnIndex("capacity")));
             v.setStatus(c.getInt(c.getColumnIndex("status")));
             v.setAmount(c.getInt(c.getColumnIndex("amount")));
             v.setPrice(c.getInt(c.getColumnIndex("price")));
+            v.setPrice(c.getInt(c.getColumnIndex("year")));
 
             list.add(v);
         }

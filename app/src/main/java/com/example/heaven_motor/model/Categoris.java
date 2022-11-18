@@ -3,20 +3,17 @@ package com.example.heaven_motor.model;
 public class Categoris {
     private int id;
     private String name;
-    private String brand;
+
 
     public Categoris() {
     }
 
-    public Categoris(int id, String name, String brand) {
+    public Categoris(int id, String name) {
         this.id = id;
         this.name = name;
-        this.brand = brand;
+
     }
 
-    public String getBrand() {
-        return brand;
-    }
 
     public int getId() {
         return id;
@@ -34,7 +31,4 @@ public class Categoris {
         this.name = name;
     }
 
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
 }
