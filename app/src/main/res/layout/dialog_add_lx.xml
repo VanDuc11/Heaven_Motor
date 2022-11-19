@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@drawable/bo_goc_custom">
+    android:background="@drawable/bo_goc_dialog"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/textView6"
@@ -35,6 +36,7 @@
                     android:hint="Tên loại"
                     android:id="@+id/dialog_add_lx_edTenloai"/>
             </com.google.android.material.textfield.TextInputLayout>
+
 
     </LinearLayout>
 

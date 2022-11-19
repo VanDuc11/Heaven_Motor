@@ -30,9 +30,9 @@ import java.util.ArrayList;
 
 public class QLyLoaiXe_Fragment extends Fragment {
     RecyclerView recyclerView;
-    Button btnThem, btnThem2,btnCancel;
+    Button btnThem, btnThem2, btnCancel;
     Dialog dialog;
-    EditText edMaloai,edTenloai,edHangxe;
+    EditText edMaloai, edTenloai, edHangxe;
 
     ArrayList<Categoris> list;
     Categoris c;
@@ -51,13 +51,14 @@ public class QLyLoaiXe_Fragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                 OpenDialogInsert();
+                OpenDialogInsert();
 
             }
         });
         return v;
     }
-    public void OpenDialogInsert(){
+
+    public void OpenDialogInsert() {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_add_lx, null);
         dialog = new Dialog(getContext());
@@ -65,7 +66,7 @@ public class QLyLoaiXe_Fragment extends Fragment {
 
         edTenloai = dialog.findViewById(R.id.dialog_add_lx_edTenloai);
         btnThem2 = dialog.findViewById(R.id.dialog_add_lx_btnThem);
-        btnCancel  = dialog.findViewById(R.id.dialog_add_lx_btnCancel);
+        btnCancel = dialog.findViewById(R.id.dialog_add_lx_btnCancel);
 
         Window window = dialog.getWindow();
         if (window == null) {
@@ -87,7 +88,6 @@ public class QLyLoaiXe_Fragment extends Fragment {
         });
 
 
-
         btnThem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,18 +95,18 @@ public class QLyLoaiXe_Fragment extends Fragment {
                 c.setName(edTenloai.getText().toString());
                 int kq = dao.insert(c);
 
-                    if (Validate()<0){
-                        Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
-                    }else {
-                        if (kq > 0) {
-                            Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                if (Validate() < 0) {
+                    Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (kq > 0) {
+                        Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
 
-                        }else {
-                            Toast.makeText(getContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
-                        }
+                    } else {
+                        Toast.makeText(getContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
                     }
-                    loadData();
-                    dialog.dismiss();
+                }
+                loadData();
+                dialog.dismiss();
 
             }
         });
@@ -114,33 +114,35 @@ public class QLyLoaiXe_Fragment extends Fragment {
     }
 
 
-    public void loadData(){
+    public void loadData() {
         list = (ArrayList<Categoris>) dao.getAll();
         linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        adapter = new CategrisAdapter(getContext(),this,list);
+        adapter = new CategrisAdapter(getContext(), this, list);
         recyclerView.setAdapter(adapter);
 
     }
-    public int Validate(){
+
+    public int Validate() {
         int check = 1;
-        if ( edTenloai.getText().length()==0){
+        if (edTenloai.getText().length() == 0) {
             check = -1;
         }
         return check;
     }
-    public void delete(String position){
+
+    public void delete(String position) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Thông báo!");
-        builder.setMessage("Bạn có muốn xóa không?");
+        builder.setMessage("Bạn có muốn xóa xe mã " + position + " không ? ");
         builder.setIcon(R.drawable.delete_forever_24);
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 int i = dao.delete(position);
-                if (i<0) {
+                if (i < 0) {
                     Toast.makeText(getContext(), "Xóa không thành công", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     loadData();
                     dialog.cancel();
                     Toast.makeText(getContext(), "Xóa Thành công", Toast.LENGTH_SHORT).show();

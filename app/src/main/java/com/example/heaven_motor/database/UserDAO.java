@@ -51,6 +51,13 @@ public class UserDAO {
         return 1;
 
     }
+    public int updatePass(Users obj) {
+        ContentValues values = new ContentValues();
+        values.put("name", obj.getName());
+        values.put("passwork", obj.getPasswork());
+        return db.update("Users", values, "id=?", new String[]{obj.getId()});
+
+    }
 
     public int delete(String id){
         return db.delete("Users","id=?",new String[]{id});
