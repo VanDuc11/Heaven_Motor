@@ -25,7 +25,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="380dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -36,20 +36,6 @@
                     android:id="@+id/dialog_add_lx_edTenloai"/>
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:hint="Hãng xe"
-                android:id="@+id/dialog_add_lx_edHangxe"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
