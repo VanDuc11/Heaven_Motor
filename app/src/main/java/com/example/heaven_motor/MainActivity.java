@@ -21,12 +21,14 @@ import com.example.heaven_motor.fragment.QLyNguoi_Dung_Fragment;
 import com.example.heaven_motor.fragment.QLyXe_Fragment;
 import com.example.heaven_motor.fragment.QlyDonHang_Fragment;
 import com.example.heaven_motor.fragment.TopMuon_Fragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, BottomNavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
+    BottomNavigationView bottomNavigationView;
     ViewPager pager;
     ViewpageAdapter adapter;
     @Override
@@ -36,10 +38,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navtion);
+        bottomNavigationView = findViewById(R.id.navtion_bottom);
         pager = findViewById(R.id.page);
         addFragment(pager);
         navigationView.setNavigationItemSelectedListener(this);
-
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,
                 R.string.openDWR,R.string.closeDWR);
         drawerLayout.addDrawerListener(toggle);
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(navigationView);
         return false;
     }
+
+
     public void addFragment(ViewPager viewPager){
         adapter = new ViewpageAdapter(getSupportFragmentManager());
         adapter.addFragment(new QLyLoaiXe_Fragment(),"Quản lý loại xe");
