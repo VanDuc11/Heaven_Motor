@@ -12,18 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategorisDao {
-    SQL sqlite;
     SQLiteDatabase db;
-    Context context;
     public CategorisDao(Context context){
-        this.context = context;
-        sqlite = new SQL(context);
+        SQL sqlite = new SQL(context);
         db = sqlite.getWritableDatabase();
     }
 
     public int insert(Categoris c){
         ContentValues values = new ContentValues();
-
         values.put("name",c.getName());
         long kq = db.insert("Categories",null,values);
         if (kq <= 0){
@@ -33,9 +29,7 @@ public class CategorisDao {
     }
     public int Update(Categoris c){
         ContentValues values = new ContentValues();
-
         values.put("name",c.getName());
-
         long kq = db.update("Categories",values,"id=?",new String[]{String.valueOf(c.getId())});
         if (kq <= 0){
             return -1;
@@ -60,7 +54,6 @@ public class CategorisDao {
     public Categoris getID(String id){
         String sql = "SELECT * FROM Categories WHERE id=?";
         List<Categoris> list = getData(sql,id);
-
         return list.get(0);
     }
     public List<Categoris> getAll(){

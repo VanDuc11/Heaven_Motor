@@ -47,19 +47,6 @@
                 android:hint="Tên loại"
                 android:id="@+id/dialog_update_lx_edTenloai"/>
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:hint="Hãng xe"
-                android:id="@+id/dialog_update_lx_edHangxe"/>
-
-        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
     <LinearLayout
