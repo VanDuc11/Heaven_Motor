@@ -5,9 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.DatHang_Fragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/fragDatHang_recy"
+    <GridView
+        android:id="@+id/gripDatHang"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:numColumns="2"
+        />
 
 </FrameLayout>
