@@ -334,6 +334,10 @@ public class QLyXe_Fragment extends Fragment {
         if (edMaXe.getText().length() == 0 || edBKS.getText().length() == 0 || edGiaThue.getText().length() == 0 || edTinhTrang.getText().length() == 0 || edTenXe.getText().length() == 0) {
             check = -1;
             Toast.makeText(getContext(), "Vui lòng nhập đủ thông tin", Toast.LENGTH_SHORT).show();
+        }else if (Integer.parseInt(edTinhTrang.getText().toString())<50||Integer.parseInt(edTinhTrang.getText().toString())>100){
+            Toast.makeText(getContext(), "Tình trạng xe trong khoảng 50%->100%", Toast.LENGTH_SHORT).show();
+            return -1;
+
         }
         return check;
     }
