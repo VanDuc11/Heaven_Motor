@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="180dp"
-    android:layout_height="230dp"
+    android:layout_height="250dp"
     android:background="@drawable/bo_goc_custom"
     android:orientation="vertical"
     android:layout_margin="15dp"
@@ -17,11 +17,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name Xe"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/coler_canh"
+
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/coler_canh"
+        android:layout_marginBottom="8dp"
+        >
+    </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +35,13 @@
         android:text="Gia/Ngay"
         android:textSize="17dp"
         android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/coler_canh"
+        android:layout_marginBottom="8dp"
+        >
+    </LinearLayout>
     <Button
         android:layout_width="150dp"
         android:layout_height="40dp"
