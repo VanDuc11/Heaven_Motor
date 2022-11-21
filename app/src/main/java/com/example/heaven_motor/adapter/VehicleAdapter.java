@@ -6,8 +6,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +40,13 @@ import java.util.ArrayList;
 public class VehicleAdapter extends BaseAdapter {
     Context context;
     ArrayList<Vehicle> list;
-    TextView tvTenXe,tvLoaiXe,tvHangXe,tvDungTich,tvGiaThue,tvChiTiet,tvXoaXe;
+    TextView tvTenXe, tvLoaiXe, tvHangXe, tvDungTich, tvGiaThue, tvChiTiet, tvXoaXe;
     ImageView imgXe;
     QLyXe_Fragment qLyXe_fragment;
     LayoutInflater inflater;
     EditText edMaXe, edTenXe, edBKS, edGiaThue, edTinhTrang;
-    public VehicleAdapter(Context context,QLyXe_Fragment qLyXe_fragment, ArrayList<Vehicle> list) {
+
+    public VehicleAdapter(Context context, QLyXe_Fragment qLyXe_fragment, ArrayList<Vehicle> list) {
         this.context = context;
         this.qLyXe_fragment = qLyXe_fragment;
         this.list = list;
@@ -69,50 +72,38 @@ public class VehicleAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemView = convertView;
-        if (itemView==null){
+        if (itemView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(
                     Context.LAYOUT_INFLATER_SERVICE);
-            itemView=inflater.inflate(R.layout.layout_item_danh_sachxe,null);
-            Vehicle obj  = list.get(position);
-            if (obj!=null){
+            itemView = inflater.inflate(R.layout.layout_item_danh_sachxe, null);
+            Vehicle obj = list.get(position);
+            if (obj != null) {
                 CategorisDao categorisDao = new CategorisDao(context);
-                Categoris categoris= categorisDao.getID(String.valueOf(obj.getCategorie_id()));
-                tvTenXe=itemView.findViewById(R.id.tvTenXe);
-                tvTenXe.setText("Tên xe : "+obj.getName());
-                tvLoaiXe=itemView.findViewById(R.id.tvLoaiXe);
-                tvLoaiXe.setText("Loại xe: "+categoris.getName());
-                tvHangXe=itemView.findViewById(R.id.tvHangXe);
-                tvHangXe.setText("Hãng xe: "+obj.getBrand());
-                tvDungTich=itemView.findViewById(R.id.tvDungTich);
-                tvDungTich.setText("Dung tích: "+obj.getCapacity()+" CC");
-                tvGiaThue=itemView.findViewById(R.id.tvGiaThue);
-                tvGiaThue.setText("Giá thuê: "+obj.getPrice()+" VNĐ/Ngày");
+                Categoris categoris = categorisDao.getID(String.valueOf(obj.getCategorie_id()));
+                tvTenXe = itemView.findViewById(R.id.tvTenXe);
+                tvTenXe.setText("Tên xe : " + obj.getName());
+                tvLoaiXe = itemView.findViewById(R.id.tvLoaiXe);
+                tvLoaiXe.setText("Loại xe: " + categoris.getName());
+                tvHangXe = itemView.findViewById(R.id.tvHangXe);
+                tvHangXe.setText("Hãng xe: " + obj.getBrand());
+                tvDungTich = itemView.findViewById(R.id.tvDungTich);
+                tvDungTich.setText("Dung tích: " + obj.getCapacity() + " CC");
+                tvGiaThue = itemView.findViewById(R.id.tvGiaThue);
+                tvGiaThue.setText("Giá thuê: " + obj.getPrice() + " VNĐ/Ngày");
                 tvXoaXe = itemView.findViewById(R.id.tvXoaXe);
-                imgXe=itemView.findViewById(R.id.imgXe);
+                imgXe = itemView.findViewById(R.id.imgXe);
 
                 byte[] xeImg = obj.getImg();
-                Bitmap bitmap = BitmapFactory.decodeByteArray(xeImg,0,xeImg.length);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(xeImg, 0, xeImg.length);
                 imgXe.setImageBitmap(bitmap);
                 tvChiTiet = itemView.findViewById(R.id.tvChiTiet);
                 tvChiTiet.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, ChiTietActivity.class);
-                        Categoris categoris= categorisDao.getID(String.valueOf(obj.getCategorie_id()));
-                      intent.putExtra("ma",obj.getId());
-                      intent.putExtra("ten",obj.getName());
-                      intent.putExtra("loai",String.valueOf(categoris.getName()));
-                      intent.putExtra("hang",obj.getBrand());
-                      intent.putExtra("dt",String.valueOf(obj.getCapacity()));
-                      intent.putExtra("gt",String.valueOf(obj.getPrice()));
-
-//                        intent.putExtra("img",obj.getImg());
-                      intent.putExtra("bks",obj.getBKS());
-                      intent.putExtra("tt",String.valueOf(obj.getStatus()));
-                      intent.putExtra("nam",String.valueOf(obj.getYear()));
-//                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-
+                        Categoris categoris = categorisDao.getID(String.valueOf(obj.getCategorie_id()));
+                        intent.putExtra("ma", obj.getId());
+                        intent.putExtra("loai", categoris.getName());
                         context.startActivity(intent);
 
                     }
@@ -127,12 +118,21 @@ public class VehicleAdapter extends BaseAdapter {
         }
         return itemView;
     }
+
     public int Validate() {
         int check = 1;
         if (edMaXe.getText().length() == 0 || edBKS.getText().length() == 0 || edGiaThue.getText().length() == 0 || edTinhTrang.getText().length() == 0 || edTenXe.getText().length() == 0) {
             check = -1;
         }
         return check;
+    }
+
+    private byte[] imgViewToByte(ImageView image) {
+        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
     }
 
 }
