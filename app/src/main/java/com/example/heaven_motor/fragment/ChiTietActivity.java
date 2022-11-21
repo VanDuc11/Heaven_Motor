@@ -8,20 +8,25 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.heaven_motor.R;
+import com.example.heaven_motor.database.CategorisDao;
+import com.example.heaven_motor.database.VehicleDAO;
 import com.example.heaven_motor.model.Categoris;
 import com.example.heaven_motor.model.Vehicle;
 
 import java.io.ByteArrayOutputStream;
 
 public class ChiTietActivity extends AppCompatActivity {
-    TextView tvmaXe,tvTenXe,tvLoaiXe,tvHangXe,tvDungTich,tvGiaThue,tvBKS,tvTrangThai,tvNam;
+    TextView tvmaXe, tvTenXe, tvLoaiXe, tvHangXe, tvDungTich, tvGiaThue, tvBKS, tvTrangThai, tvNam;
     ImageView img;
     Vehicle obj;
+    VehicleDAO vehicleDAO;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,34 +42,24 @@ public class ChiTietActivity extends AppCompatActivity {
         tvNam = findViewById(R.id.tvNam);
         img = findViewById(R.id.imgXeChiTiet);
         Intent intent = getIntent();
-        tvmaXe.setText(intent.getStringExtra("ma"));
-        tvTenXe.setText(intent.getStringExtra("ten"));
-        tvLoaiXe.setText(intent.getStringExtra("loai"));
-        tvHangXe.setText(intent.getStringExtra("hang"));
-        tvDungTich.setText(intent.getStringExtra("dt")+" CC");
-        tvGiaThue.setText(intent.getStringExtra("gt")+ "VNĐ/Ngày");
-        tvBKS.setText(intent.getStringExtra("bks"));
-        tvTrangThai.setText(intent.getStringExtra("tt")+ " %");
-        tvNam.setText(intent.getStringExtra("nam"));
-//        Bundle bundle = getIntent().getExtras();
-//        int res_img = bundle.getInt("img");
-//        img.setImageResource(res_img);
+        if (getIntent().hasExtra("ma")) {
+            String ma = intent.getStringExtra("ma");
 
-//        if (getIntent().hasExtra("anh")){
-//            Bitmap bitmap = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("anh"),0,
-//                    getIntent().getByteArrayExtra("anh").length);
-//                    img.setImageBitmap(bitmap);
-//        }else {
-//            Toast.makeText(this, "Không có", Toast.LENGTH_SHORT).show();
-//        }
-
-
-    }
-    private byte[] imgViewToByte(ImageView image) {
-        Bitmap bitmap = ((BitmapDrawable) image.getDrawable()).getBitmap();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] byteArray = stream.toByteArray();
-        return byteArray;
+            vehicleDAO = new VehicleDAO(getApplicationContext());
+            obj = vehicleDAO.getID(ma);
+            tvmaXe.setText(obj.getId());
+            tvTenXe.setText(obj.getName());
+            tvLoaiXe.setText(intent.getStringExtra("loai"));
+            tvHangXe.setText(obj.getBrand());
+            tvGiaThue.setText(String.valueOf(obj.getPrice()));
+            tvDungTich.setText(String.valueOf(obj.getCapacity()));
+            tvTrangThai.setText(String.valueOf(obj.getStatus()));
+            tvBKS.setText(obj.getBKS());
+            tvNam.setText(String.valueOf(obj.getYear()));
+            Bitmap bitmap = BitmapFactory.decodeByteArray(obj.getImg(), 0, obj.getImg().length);
+            img.setImageBitmap(bitmap);
+        } else {
+            Toast.makeText(this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
+        }
     }
 }

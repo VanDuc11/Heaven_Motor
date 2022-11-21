@@ -11,6 +11,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_moto"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_moto_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Heaven_Motor"
