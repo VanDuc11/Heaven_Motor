@@ -98,12 +98,14 @@ public class VehicleAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, ChiTietActivity.class);
+                        Categoris categoris= categorisDao.getID(String.valueOf(obj.getCategorie_id()));
                       intent.putExtra("ma",obj.getId());
                       intent.putExtra("ten",obj.getName());
-                      intent.putExtra("loai",String.valueOf(obj.getCategorie_id()));
+                      intent.putExtra("loai",String.valueOf(categoris.getName()));
                       intent.putExtra("hang",obj.getBrand());
                       intent.putExtra("dt",String.valueOf(obj.getCapacity()));
                       intent.putExtra("gt",String.valueOf(obj.getPrice()));
+
 //                        intent.putExtra("img",obj.getImg());
                       intent.putExtra("bks",obj.getBKS());
                       intent.putExtra("tt",String.valueOf(obj.getStatus()));

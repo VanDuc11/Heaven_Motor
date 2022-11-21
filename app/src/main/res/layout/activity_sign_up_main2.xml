@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Sign_Up.Sign_up_MainActivity2">
+    tools:context=".Sign_Up.Sign_up_MainActivity2"
+    android:background="@drawable/bachgroud">
 
     <TextView
         android:id="@+id/textView"
@@ -43,6 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
         app:layout_constraintVertical_bias="0.607">
 
         <com.google.android.material.textfield.TextInputLayout

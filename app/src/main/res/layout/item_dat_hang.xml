@@ -1,51 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="180dp"
-    android:layout_height="250dp"
-    android:background="@drawable/bo_goc_custom"
-    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:layout_margin="15dp"
-    android:gravity="center">
+    android:layout_marginLeft="30dp"
+    android:background="@drawable/bo_goc_custom"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+        android:id="@+id/item_dat_hang_img"
+        android:layout_width="wrap_content"
+        android:layout_height="116dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
-        android:src="@drawable/wave_alpha"/>
+        android:src="@drawable/wave_alpha" />
+
     <TextView
+        android:id="@+id/item_dat_hang_tvName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="8dp"
         android:text="Name Xe"
-
-        android:textStyle="bold"
+        android:textColor="@color/black"
         android:textSize="20dp"
-        android:gravity="center"/>
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/coler_canh"
-        android:layout_marginBottom="8dp"
-        >
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/item_dat_hang_tvnam"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0"
+            android:background="@drawable/bo_goc_custo3"
+            android:gravity="center"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/item_dat_hang_tvtinhtrang"
+            android:layout_width="133dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0"
+            android:background="@drawable/bo_goc_custo3"
+            android:gravity="center"
+            android:text="TextView" />
     </LinearLayout>
+
     <TextView
+        android:id="@+id/item_dat_hang_tvGia"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp"
         android:text="Gia/Ngay"
+        android:textColor="@color/black"
         android:textSize="17dp"
-        android:gravity="center"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:background="@drawable/coler_canh"
-        android:layout_marginBottom="8dp"
-        >
-    </LinearLayout>
+        android:textStyle="bold" />
+
     <Button
-        android:layout_width="150dp"
-        android:layout_height="40dp"
+        android:id="@+id/item_dat_hang_btnCT"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
         android:backgroundTint="#2196F3"
-        android:text="Xem chi tiet"/>
+        android:text="Xem chi tiet" />
 
 </LinearLayout>

@@ -122,7 +122,6 @@ public class QLyLoaiXe_Fragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new CategrisAdapter(getContext(), this, list);
         recyclerView.setAdapter(adapter);
-
     }
 
     public int Validate() {

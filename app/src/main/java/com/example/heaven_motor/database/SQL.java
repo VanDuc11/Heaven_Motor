@@ -41,7 +41,7 @@ public class SQL extends SQLiteOpenHelper {
 
 
     public static final String Table_Orders = "CREATE TABLE Orders" +
-            "(id text PRIMARY KEY ," +
+            "(id integer PRIMARY KEY AUTOINCREMENT," +
             "user_id text REFERENCES Users(id)," +
             "vehicle_id text REFERENCES Vehicle(id)," +
             "start_time date ," +
@@ -62,7 +62,6 @@ public class SQL extends SQLiteOpenHelper {
         db.execSQL(Table_Orders);
 
         //inser data
-
         db.execSQL(Data_SQL.INSERT_User);
     }
 
