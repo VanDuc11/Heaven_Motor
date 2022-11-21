@@ -31,6 +31,7 @@ import com.example.heaven_motor.fragment.QLyXe_Fragment;
 import com.example.heaven_motor.model.Categoris;
 import com.example.heaven_motor.model.Vehicle;
 
+import java.io.ByteArrayOutputStream;
 import java.sql.Blob;
 import java.util.ArrayList;
 
@@ -97,17 +98,21 @@ public class VehicleAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Intent intent = new Intent(context, ChiTietActivity.class);
+                        Categoris categoris= categorisDao.getID(String.valueOf(obj.getCategorie_id()));
                       intent.putExtra("ma",obj.getId());
                       intent.putExtra("ten",obj.getName());
-                      intent.putExtra("loai",String.valueOf(obj.getCategorie_id()));
+                      intent.putExtra("loai",String.valueOf(categoris.getName()));
                       intent.putExtra("hang",obj.getBrand());
                       intent.putExtra("dt",String.valueOf(obj.getCapacity()));
                       intent.putExtra("gt",String.valueOf(obj.getPrice()));
-//                      intent.putExtra("img",obj.getImg());
+
+//                        intent.putExtra("img",obj.getImg());
                       intent.putExtra("bks",obj.getBKS());
                       intent.putExtra("tt",String.valueOf(obj.getStatus()));
                       intent.putExtra("nam",String.valueOf(obj.getYear()));
-//                      intent.putExtra("anh",bitmap);
+//                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+
                         context.startActivity(intent);
 
                     }

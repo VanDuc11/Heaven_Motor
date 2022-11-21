@@ -10,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.heaven_motor.R;
 import com.example.heaven_motor.model.Categoris;
@@ -45,9 +46,17 @@ public class ChiTietActivity extends AppCompatActivity {
         tvBKS.setText(intent.getStringExtra("bks"));
         tvTrangThai.setText(intent.getStringExtra("tt")+ " %");
         tvNam.setText(intent.getStringExtra("nam"));
-//        byte[] xeImg = intent.getStringExtra("anh");
-//        Bitmap bitmap = BitmapFactory.decodeByteArray(xeImg, 0, xeImg.length);
-//        img.setImageBitmap(intent.getStringExtra("anh"));
+//        Bundle bundle = getIntent().getExtras();
+//        int res_img = bundle.getInt("img");
+//        img.setImageResource(res_img);
+
+//        if (getIntent().hasExtra("anh")){
+//            Bitmap bitmap = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("anh"),0,
+//                    getIntent().getByteArrayExtra("anh").length);
+//                    img.setImageBitmap(bitmap);
+//        }else {
+//            Toast.makeText(this, "Không có", Toast.LENGTH_SHORT).show();
+//        }
 
 
     }
