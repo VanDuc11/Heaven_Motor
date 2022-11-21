@@ -46,7 +46,6 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:inputType="number"
-            android:drawableEnd="@drawable/ic_baseline_arrow_circle_down_24"
             android:hint="Giá thuê" />
 
     </LinearLayout>
@@ -71,7 +70,6 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            android:drawableEnd="@drawable/ic_baseline_arrow_circle_down_24"
             android:hint="Trạng thái" />
 
     </LinearLayout>

@@ -6,11 +6,12 @@
     tools:context=".fragment.DatHang_Fragment">
 
     <GridView
-        android:id="@+id/gripDatHang"
+        android:id="@+id/frag_datHang_grip"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:numColumns="2"
+        android:layout_marginEnd="@dimen/cardview_compat_inset_shadow"
         />
 
 </FrameLayout>

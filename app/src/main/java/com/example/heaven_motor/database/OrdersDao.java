@@ -22,7 +22,6 @@ public class OrdersDao {
     }
     public int insert(Orders o){
         ContentValues values = new ContentValues();
-        values.put("id",o.getId());
         values.put("user_id",o.getUser_id());
         values.put("vehicle_id",o.getVehicle_id());
         values.put("start_time",o.getStart_time());
@@ -39,7 +38,6 @@ public class OrdersDao {
     }
     public int Update(Orders o){
         ContentValues values = new ContentValues();
-        values.put("id",o.getId());
         values.put("user_id",o.getUser_id());
         values.put("vehicle_id",o.getVehicle_id());
         values.put("start_time",o.getStart_time());

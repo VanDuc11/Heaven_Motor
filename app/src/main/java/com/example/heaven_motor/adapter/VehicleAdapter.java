@@ -103,11 +103,11 @@ public class VehicleAdapter extends BaseAdapter {
                       intent.putExtra("hang",obj.getBrand());
                       intent.putExtra("dt",String.valueOf(obj.getCapacity()));
                       intent.putExtra("gt",String.valueOf(obj.getPrice()));
-                      intent.putExtra("img",obj.getImg());
+//                      intent.putExtra("img",obj.getImg());
                       intent.putExtra("bks",obj.getBKS());
                       intent.putExtra("tt",String.valueOf(obj.getStatus()));
                       intent.putExtra("nam",String.valueOf(obj.getYear()));
-                      intent.putExtra("anh",bitmap);
+//                      intent.putExtra("anh",bitmap);
                         context.startActivity(intent);
 
                     }
