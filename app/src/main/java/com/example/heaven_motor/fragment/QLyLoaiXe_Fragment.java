@@ -47,6 +47,8 @@ public class QLyLoaiXe_Fragment extends Fragment {
         dao = new CategorisDao(getContext());
         btnThem = v.findViewById(R.id.fragLoaiXe_btnLoaixe);
         recyclerView = v.findViewById(R.id.fragLoaiXe_recy);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false);
+        recyclerView.setLayoutManager(linearLayoutManager);
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
