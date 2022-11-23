@@ -16,7 +16,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.heaven_motor.adapter.ViewpageAdapter;
-import com.example.heaven_motor.databinding.ActivityMainBinding;
+//import com.example.heaven_motor.databinding.ActivityMainBinding;
 import com.example.heaven_motor.fragment.DatHang_Fragment;
 import com.example.heaven_motor.fragment.DoanhThu_Fragment;
 import com.example.heaven_motor.fragment.Doi_Mat_Khau_Fragment;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     ViewPager pager;
     ViewpageAdapter adapter;
-    ActivityMainBinding binding;
+//    ActivityMainBinding binding;
     HomeFragment homeFragment = new HomeFragment();
     ToiFragment toiFragment  =new ToiFragment();
     TinTucFragment tinTucFragment  =new TinTucFragment();
@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             pager.setCurrentItem(11);
         }
         else if (id == R.id.dangXuat ){
+
             startActivity(new Intent(MainActivity.this, Login_MainActivity2.class));
         }
         drawerLayout.closeDrawer(navigationView);
