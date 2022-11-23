@@ -20,6 +20,29 @@ public class UserDAO {
         sqLite = new SQL(context);
         db = sqLite.getWritableDatabase();
     }
+    public ArrayList<Users> getAll_rcv() {
+        ArrayList<Users> ds = new ArrayList<>();
+        SQLiteDatabase db = sqLite.getReadableDatabase();
+        String sql = "SELECT * FROM Users";
+        Cursor cs = db.rawQuery(sql, null);
+        cs.moveToFirst();
+        while (cs.isAfterLast() == false) {
+
+            String id = cs.getString(0);
+            String name = cs.getString(1);
+            String passwork = cs.getString(2);
+            String phone = cs.getString(3);
+            int date = cs.getInt(4);
+            String address = cs.getString(5);
+            String cccd = cs.getString(6);
+            Users us = new Users(id, name, date, phone, cccd, address, passwork);
+            ds.add(us);
+            cs.moveToNext();
+        }
+        cs.close();
+        db.close();
+        return ds;
+    }
     public int insert(Users u){
         ContentValues values = new ContentValues();
         values.put("id",u.getId());
@@ -35,7 +58,7 @@ public class UserDAO {
         }
         return 1;
     }
-    public  int update(Users u){
+    public  boolean update(Users u){
         ContentValues values = new ContentValues();
         values.put("id",u.getId());
         values.put("name",u.getName());
@@ -45,12 +68,15 @@ public class UserDAO {
         values.put("cccd",u.getCCCD());
         values.put("passwork",u.getPasswork());
         long kq = db.update("Users",values,"id=?",new String[]{String.valueOf(u.getId())});
-        if (kq <= 0){
-            return -1;
-        }
-        return 1;
-
+        return (kq > 0);
     }
+    public boolean delete_(String id) {
+        SQLiteDatabase db = sqLite.getWritableDatabase();
+        int row = db.delete("Users", "id=?", new String[]{id + ""});
+        return (row > 0);
+    }
+
+
     public int updatePass(Users obj) {
         ContentValues values = new ContentValues();
         values.put("name", obj.getName());
@@ -73,7 +99,7 @@ public class UserDAO {
             u.setId(c.getString(c.getColumnIndex("id")));
             u.setName(c.getString(c.getColumnIndex("name")));
             u.setDate(c.getInt(c.getColumnIndex("date")));
-            u.setAddress(c.getString(c.getColumnIndex("phone")));
+            u.setPhone(c.getString(c.getColumnIndex("phone")));
             u.setAddress(c.getString(c.getColumnIndex("address")));
             u.setCCCD(c.getString(c.getColumnIndex("cccd")));
             u.setPasswork(c.getString(c.getColumnIndex("passwork")));
