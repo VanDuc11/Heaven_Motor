@@ -14,7 +14,7 @@
         android:src="@drawable/place" />
 
     <TextView
-        android:background="#F38356"
+        android:background="#B3D7E8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -76,7 +76,7 @@
     </LinearLayout>
 
     <TextView
-        android:background="#F38356"
+        android:background="#B3D7E8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -92,14 +92,14 @@
 
         <TextView
             android:text="Mời chọn loại xe"
-            android:background="#F6D36B"
+            android:background="#C3BFB5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1" />
 
         <TextView
-            android:background="#F6D36B"
+            android:background="#C3BFB5"
             android:text="Mời chọn hãng xe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -136,14 +136,14 @@
 
         <TextView
             android:text="Chọn năm sản xuẩt"
-            android:background="#F6D36B"
+            android:background="#C3BFB5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1" />
 
         <TextView
-            android:background="#F6D36B"
+            android:background="#C3BFB5"
             android:text="Chọn dung tích xe (CC)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
