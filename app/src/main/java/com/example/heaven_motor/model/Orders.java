@@ -1,12 +1,11 @@
 package com.example.heaven_motor.model;
 
 public class Orders {
-    private String id;
+    private int id;
     private String user_id;
     private String vehicle_id;
     private String start_time;
-    private String end_time;
-    private int status;
+    private String end_time,timethuc;
     private int total;
     private int phatsinh;
 
@@ -14,22 +13,30 @@ public class Orders {
     public Orders() {
     }
 
-    public Orders(String id, String user_id, String vehicle_id, String start_time, String end_time, int status, int total, int phatsinh) {
+    public Orders(int id, String user_id, String vehicle_id, String start_time, String end_time, String timethuc, int total, int phatsinh) {
         this.id = id;
         this.user_id = user_id;
         this.vehicle_id = vehicle_id;
         this.start_time = start_time;
         this.end_time = end_time;
-        this.status = status;
+        this.timethuc = timethuc;
         this.total = total;
         this.phatsinh = phatsinh;
     }
 
-    public String getId() {
+    public String getTimethuc() {
+        return timethuc;
+    }
+
+    public void setTimethuc(String timethuc) {
+        this.timethuc = timethuc;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -65,13 +72,7 @@ public class Orders {
         this.end_time = end_time;
     }
 
-    public int getStatus() {
-        return status;
-    }
 
-    public void setStatus(int status) {
-        this.status = status;
-    }
 
     public int getTotal() {
         return total;

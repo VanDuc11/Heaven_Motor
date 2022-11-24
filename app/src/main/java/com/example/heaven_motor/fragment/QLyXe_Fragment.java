@@ -261,6 +261,7 @@ public class QLyXe_Fragment extends Fragment {
                     obj.setStatus(Integer.parseInt(edTinhTrang.getText().toString()));
                     obj.setCategorie_id(maLoaiXe);
                     obj.setBrand(hangXe);
+                    obj.setTrangThai(0);
                     obj.setCapacity(dungTich);
                     obj.setYear(nam);
                     obj.setImg(imgViewToByte(imgXe));

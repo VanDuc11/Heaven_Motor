@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class SQL extends SQLiteOpenHelper {
     public SQL(@Nullable Context context) {
-        super(context, "database.db", null, 4);
+        super(context, "database.db", null, 17);
     }
 
 
@@ -24,8 +24,7 @@ public class SQL extends SQLiteOpenHelper {
 
     public static final String Table_Categories = "CREATE TABLE Categories " +
             "(id integer PRIMARY KEY AUTOINCREMENT," +
-            "name text," +
-            "brand text);";
+            "name text);";
 
 
     public static final String Table_Vehicle = "CREATE TABLE Vehicle" +
@@ -37,6 +36,7 @@ public class SQL extends SQLiteOpenHelper {
             "status integer," +
             "price integer," +
             "brand text,"+
+            "trangThai integer,"+
             "year integer," +
             "categorie_id integer REFERENCES Categories(id))";
 
@@ -49,7 +49,8 @@ public class SQL extends SQLiteOpenHelper {
             "end_time date," +
             "status integer," +
             " total integer," +
-            "phatsinh integer);";
+            "phatsinh integer," +
+            "timethuc date);";
 
 
 
@@ -64,6 +65,9 @@ public class SQL extends SQLiteOpenHelper {
 
         //inser data
         db.execSQL(Data_SQL.INSERT_User);
+        db.execSQL(Data_SQL.INSERT_Vehicle);
+        //db.execSQL(Data_SQL.INSERT_Vehicle);
+
     }
 
     @Override
