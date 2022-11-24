@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.heaven_motor.R;
 import com.example.heaven_motor.model.Users;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class UserDAO {
         values.put("phone",u.getPhone());
         values.put("address",u.getAddress());
         values.put("cccd",u.getCCCD());
+        values.put("img", u.getImg());
         values.put("passwork",u.getPasswork());
         long kq = db.insert("Users",null,values);
         if (kq <= 0){
@@ -66,6 +68,7 @@ public class UserDAO {
         values.put("phone",u.getPhone());
         values.put("address",u.getAddress());
         values.put("cccd",u.getCCCD());
+        values.put("img",u.getImg());
         values.put("passwork",u.getPasswork());
         long kq = db.update("Users",values,"id=?",new String[]{String.valueOf(u.getId())});
         return (kq > 0);
@@ -102,6 +105,7 @@ public class UserDAO {
             u.setPhone(c.getString(c.getColumnIndex("phone")));
             u.setAddress(c.getString(c.getColumnIndex("address")));
             u.setCCCD(c.getString(c.getColumnIndex("cccd")));
+            u.setImg(c.getBlob(c.getColumnIndex("img")));
             u.setPasswork(c.getString(c.getColumnIndex("passwork")));
 
             list.add(u);

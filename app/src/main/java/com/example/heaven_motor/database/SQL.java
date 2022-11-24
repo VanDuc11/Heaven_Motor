@@ -19,6 +19,7 @@ public class SQL extends SQLiteOpenHelper {
             "phone text," +
             "date integer," +
             "address text," +
+            "img blob,"+
             "cccd text);";
 
     public static final String Table_Categories = "CREATE TABLE Categories " +

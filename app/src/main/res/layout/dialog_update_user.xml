@@ -1,128 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#995C5C77"
-        android:gravity="center"
-        android:text="UPDATE TÀI KHOẢN"
-        android:textSize="30sp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/Dialog_Sign_up_edId_update"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFFFFF"
-            android:hint="Tên đăng nhâp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/Dialog_Sign_up_edPassword_update"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#FFFFFF"
-                android:hint="Mật khẩu" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Dialog_Sign_up_edName_update"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
-                    android:hint="Họ và Tên" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Dialog_Sign_up_edDate_update"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:hint="Tuổi"
-                        android:inputType="number" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/Dialog_Sign_up_edCCCD_update"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="#FFFFFF"
-                            android:hint="Số CCCD"
-                            android:inputType="number" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/Dialog_Sign_up_edPhone_update"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="#FFFFFF"
-                                android:hint="Số điện thoại"
-                                android:inputType="number" />
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/Dialog_Sign_up_edAddress_update"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:background="#FFFFFF"
-                                    android:hint="Địa chỉ" />
-                            </com.google.android.material.textfield.TextInputLayout>
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </com.google.android.material.textfield.TextInputLayout>
-                </com.google.android.material.textfield.TextInputLayout>
-            </com.google.android.material.textfield.TextInputLayout>
-        </com.google.android.material.textfield.TextInputLayout>
-    </com.google.android.material.textfield.TextInputLayout>
-
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@color/white"
+    tools:ignore="MissingDefaultResource">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:orientation="horizontal">
-
+        <ImageView
+            android:padding="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_width="140dp"
+            android:layout_height="70dp"
+            android:src="@drawable/place"
+            android:background="@drawable/bo_goc_custom"
+            android:id="@+id/imgUser"/>
+        <ImageView
+            android:id="@+id/imgChup"
+            android:background="@drawable/ic_baseline_camera_alt_24"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="Chụp ảnh"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="30dp"/>
+        <ImageView
+            android:id="@+id/imgFolder"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="Chọn ảnh"
+            android:src="@drawable/ic_baseline_drive_folder_upload_24"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+    <EditText
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edTenUser"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/edTuoiUser"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edCCCD"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edSDT"/>
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edDiaChi"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="horizontal">
         <Button
-            android:id="@+id/Dialog_btnHuyUpdateUser"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#995C5C77"
-            android:text="Hủy" />
-
+            android:layout_height="wrap_content"
+            android:text="Cập nhật"
+            android:layout_margin="10dp"
+            android:id="@+id/btnCapNhatUser"
+            android:layout_weight="1"/>
         <Button
-            android:id="@+id/Dialog_btnUpdateUser"
             android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_margin="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#995C5C77"
-            android:text="SỬA" />
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_margin="10dp"
+            android:id="@+id/btnHuy"
+            android:layout_weight="1"/>
     </LinearLayout>
 
 
+
+
+
 </LinearLayout>
+

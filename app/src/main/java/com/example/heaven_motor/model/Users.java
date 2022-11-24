@@ -8,17 +8,27 @@ public class Users {
     private String phone;
     private String CCCD;
     private String address;
+    private byte[] img;
     public Users() {
     }
 
-    public Users(String id, String name, int date, String phone, String CCCD, String address, String passwork) {
+    public byte[] getImg() {
+        return img;
+    }
+
+    public void setImg(byte[] img) {
+        this.img = img;
+    }
+
+    public Users(String id, String passwork, String name, int date, String phone, String CCCD, String address, byte[] img) {
         this.id = id;
+        this.passwork = passwork;
         this.name = name;
         this.date = date;
         this.phone = phone;
         this.CCCD = CCCD;
         this.address = address;
-        this.passwork = passwork;
+        this.img = img;
     }
 
     public String getPhone() {

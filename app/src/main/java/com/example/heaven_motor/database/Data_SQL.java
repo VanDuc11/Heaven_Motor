@@ -1,6 +1,9 @@
 package com.example.heaven_motor.database;
 
 public class Data_SQL {
+
+    public static final String INSERT_User_img = "insert into Users(img) values"+"('R.drawable.ic_baseline_person_24')";
+    
     public static final String INSERT_User = "Insert into Users(id, name, date, address, phone, cccd, passwork) values" +
             "('Lam','Tùng Lâm',18,'Thái Bình','0372514986','158649251','Admin')," +
             "('Duc','Văn đức',18,'Hà Nội','0351582258','8165619476','Admin')," +
