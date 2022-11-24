@@ -16,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.heaven_motor.adapter.ViewpageAdapter;
-//import com.example.heaven_motor.databinding.ActivityMainBinding;
 import com.example.heaven_motor.fragment.DatHang_Fragment;
 import com.example.heaven_motor.fragment.DoanhThu_Fragment;
 import com.example.heaven_motor.fragment.Doi_Mat_Khau_Fragment;
@@ -29,6 +28,7 @@ import com.example.heaven_motor.fragment.QlyDonHang_Fragment;
 import com.example.heaven_motor.fragment.TinTucFragment;
 import com.example.heaven_motor.fragment.ToiFragment;
 import com.example.heaven_motor.fragment.TopMuon_Fragment;
+import com.example.heaven_motor.fragment.yeu_cau_Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     ViewPager pager;
     ViewpageAdapter adapter;
-//    ActivityMainBinding binding;
+
     HomeFragment homeFragment = new HomeFragment();
     ToiFragment toiFragment  =new ToiFragment();
     TinTucFragment tinTucFragment  =new TinTucFragment();
@@ -49,19 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        binding.navtionBottom.setOnItemSelectedListener(item ->{
-//            switch (item.getItemId()){
-//                case R.id.trangChu:
-//                    rp(new QLyXe_Fragment());
-//                    break;
-//                case R.id.toi:
-//                    rp(new ToiFragment());
-//                    break;
-//            }
-//            return true;
-//        });
+
 
         drawerLayout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
@@ -101,10 +89,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         onContextMenuClosed();
+
+        Intent intent = getIntent();
+        String user=  intent.getStringExtra("user");
+
+        if (user.equals("Admin")){
+            navigationView.getMenu().findItem(R.id.QLLX).setVisible(true);
+            navigationView.getMenu().findItem(R.id.QLX).setVisible(true);
+            navigationView.getMenu().findItem(R.id.QLDH).setVisible(true);
+            navigationView.getMenu().findItem(R.id.topXe).setVisible(true);
+            navigationView.getMenu().findItem(R.id.doanhThu).setVisible(true);
+            navigationView.getMenu().findItem(R.id.QLND).setVisible(true);
+        }else {
+            navigationView.getMenu().findItem(R.id.QLLX).setVisible(false);
+            navigationView.getMenu().findItem(R.id.QLX).setVisible(false);
+            navigationView.getMenu().findItem(R.id.QLDH).setVisible(false);
+            navigationView.getMenu().findItem(R.id.topXe).setVisible(false);
+            navigationView.getMenu().findItem(R.id.doanhThu).setVisible(false);
+            navigationView.getMenu().findItem(R.id.QLND).setVisible(false);
+        }
     }
 
     private void onContextMenuClosed() {
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -168,6 +176,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             toolbar.setTitle("Tài khoản");
             pager.setAdapter(adapter);
             pager.setCurrentItem(11);
+        }if (id == R.id.TB){
+            toolbar.setTitle("Thông báo");
+            pager.setAdapter(adapter);
+            pager.setCurrentItem(12);
         }
         else if (id == R.id.dangXuat ){
 
@@ -192,6 +204,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adapter.addFragment(new HomeFragment(),"Home");
         adapter.addFragment(new TinTucFragment(),"Tài khoản");
         adapter.addFragment(new ToiFragment(),"Tài Khoản");
+        adapter.addFragment(new yeu_cau_Fragment(),"Yêu Cầu");
         pager.setAdapter(adapter);
 
     }

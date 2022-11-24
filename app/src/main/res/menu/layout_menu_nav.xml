@@ -22,7 +22,8 @@
         <item android:id="@+id/LSDH"
             android:icon="@drawable/ic_baseline_arrow_right_24"
             android:title="Lịch Sử đơn Hàng"/>
-
+        <item android:id="@+id/TB"
+            android:title="Thông Báo"/>
     </group>
     <item android:title="Thống kê">
         <menu>

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.DatHang_Fragment">
-
+    tools:context=".fragment.yeu_cau_Fragment">
 
     <ListView
-        android:id="@+id/frag_LS_thue_xe_rey"
+        android:id="@+id/frag_yeu_cau"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-</LinearLayout>
+</FrameLayout>

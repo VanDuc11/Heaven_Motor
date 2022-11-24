@@ -13,10 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.heaven_motor.R;
+import com.example.heaven_motor.database.CategorisDao;
+import com.example.heaven_motor.database.VehicleDAO;
 import com.example.heaven_motor.fragment.DatHang_Fragment;
+import com.example.heaven_motor.fragment.HomeFragment;
 import com.example.heaven_motor.fragment.Thue_Xe_Activity;
+import com.example.heaven_motor.fragment.TinTucFragment;
+import com.example.heaven_motor.model.Categoris;
+import com.example.heaven_motor.model.Orders;
 import com.example.heaven_motor.model.Vehicle;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class DatHangAdapter extends BaseAdapter {
@@ -24,7 +31,7 @@ public class DatHangAdapter extends BaseAdapter {
     Context context;
     List<Vehicle> mList;
     ImageView img;
-    TextView tvName,tvGia,tvNam,tvtt;
+    TextView tvName,tvGia,tvNam,tvtt,tvHang;
     Button btnCT;
     DatHang_Fragment datHang_fragment;
 
@@ -58,6 +65,7 @@ public class DatHangAdapter extends BaseAdapter {
             convertView = inflater.inflate(R.layout.item_dat_hang,null);
         }
 
+
         final Vehicle v = mList.get(position);
         if (convertView != null){
             img = convertView.findViewById(R.id.item_dat_hang_img);
@@ -65,6 +73,7 @@ public class DatHangAdapter extends BaseAdapter {
             tvGia = convertView.findViewById(R.id.item_dat_hang_tvGia);
             tvNam = convertView.findViewById(R.id.item_dat_hang_tvnam);
             tvtt = convertView.findViewById(R.id.item_dat_hang_tvtinhtrang);
+            tvHang= convertView.findViewById(R.id.item_dat_hang_tvHang);
             btnCT = convertView.findViewById(R.id.item_dat_hang_btnCT);
 
             final byte[] xeImg = v.getImg();
@@ -74,25 +83,17 @@ public class DatHangAdapter extends BaseAdapter {
             tvGia.setText(v.getPrice() +"VND/Ngày");
             tvNam.setText("Date: "+v.getYear());
             tvtt.setText("Tình Trạng: "+ v.getStatus() +"%");
+            tvHang.setText("Hãng: "+v.getBrand());
 
+            btnCT.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, Thue_Xe_Activity.class);
+                    intent.putExtra("id",v.getId());
+                    context.startActivity(intent);
+                }
+            });
         }
-        btnCT.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, Thue_Xe_Activity.class);
-                intent.putExtra("id",v.getId());
-                intent.putExtra("categorie_id",String.valueOf(v.getCategorie_id()));
-                intent.putExtra("name",v.getName());
-                intent.putExtra("BKS",v.getBKS());
-                intent.putExtra("capacity",String.valueOf(v.getCapacity()));
-                intent.putExtra("brand",v.getBrand());
-                intent.putExtra("status",String.valueOf(v.getStatus()));
-                intent.putExtra("price",String.valueOf(v.getPrice()));
-                intent.putExtra("year",String.valueOf(v.getYear()));
-//                intent.putExtra("img",v.getImg());
-                context.startActivity(intent);
-            }
-        });
         return convertView;
     }
 

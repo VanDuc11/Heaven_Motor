@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +27,7 @@ public class ChiTietActivity extends AppCompatActivity {
     ImageView img;
     Vehicle obj;
     VehicleDAO vehicleDAO;
+    Button btnThue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +63,6 @@ public class ChiTietActivity extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
         }
+
     }
 }
