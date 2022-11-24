@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.heaven_motor.model.Orders;
 import com.example.heaven_motor.model.Vehicle;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class VehicleDAO {
         values.put("id", v.getId());
         values.put("categorie_id", v.getCategorie_id());
         values.put("name", v.getName());
-//        values.put("imager",v.getImager());
+        values.put("trangThai",v.getTrangThai());
         values.put("BKS", v.getBKS());
         values.put("capacity", v.getCapacity());
         values.put("status", v.getStatus());
@@ -46,7 +47,7 @@ public class VehicleDAO {
         values.put("id", v.getId());
         values.put("categorie_id", v.getCategorie_id());
         values.put("name", v.getName());
-//        values.put("imager",v.getImager());
+        values.put("trangThai",v.getTrangThai());
         values.put("BKS", v.getBKS());
         values.put("capacity", v.getCapacity());
         values.put("status", v.getStatus());
@@ -75,7 +76,7 @@ public class VehicleDAO {
             v.setId((c.getString(c.getColumnIndex("id"))));
             v.setCategorie_id(c.getInt(c.getColumnIndex("categorie_id")));
             v.setName(c.getString(c.getColumnIndex("name")));
-//            v.setImager(c.getInt(c.getColumnIndex("imager")));
+            v.setTrangThai(c.getInt(c.getColumnIndex("trangThai")));
             v.setBKS(c.getString(c.getColumnIndex("BKS")));
             v.setCapacity(c.getInt(c.getColumnIndex("capacity")));
             v.setStatus(Integer.parseInt(c.getString(c.getColumnIndex("status"))));
@@ -96,7 +97,33 @@ public class VehicleDAO {
     }
 
     public List<Vehicle> getAll() {
-        String sql = "SELECT * FROM Vehicle";
+        String sql = "SELECT * FROM Vehicle ";
         return getData(sql);
+    }
+    public List<Vehicle> getThanhPhan(){
+        String sql = "SELECT * FROM Vehicle WHERE trangThai = 0";
+        return getData(sql);
+    }
+
+    public List<Vehicle> getNgay(String tuNgay,String denNgay){
+        String sql = "SELECT * FROM Vehicle JOIN Orders ON Orders.vehicle_id = Vehicle.id WHERE Orders.start_time BETWEEN ? AND ?";
+        db.rawQuery(sql,new String[]{tuNgay,denNgay});
+        return getData(sql, new String[]{tuNgay,denNgay});
+    }
+    @SuppressLint("Range")
+    public String  getLoaixe(){
+        String sql = "SELECT Categories.name as name_categories FROM Categories JOIN Vehicle ON Vehicle.categorie_id = Categories.id ";
+        List<String> list = new ArrayList<>();
+
+        Cursor c = db.rawQuery(sql,null);
+        while (c.moveToNext()){
+            try {
+                list.add(c.getString(c.getColumnIndex("name_categories")));
+            }catch (Exception e){
+                list.get(0);
+            }
+        }
+
+        return list.get(0);
     }
 }

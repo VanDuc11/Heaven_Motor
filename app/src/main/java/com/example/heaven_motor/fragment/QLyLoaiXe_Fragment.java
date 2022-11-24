@@ -52,7 +52,6 @@ public class QLyLoaiXe_Fragment extends Fragment {
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 OpenDialogInsert();
 
             }

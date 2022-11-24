@@ -9,7 +9,7 @@ public class Vehicle {
     private String brand;
     private int status;
     private int price;
-    private int year;
+    private int year,trangThai;
     private byte[] img;
 
     public byte[] getImg() {
@@ -23,7 +23,15 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String id, int categorie_id, String name, String BKS, int capacity, String brand, int status, int price, int year, byte[] img) {
+    public int getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public Vehicle(String id, int categorie_id, String name, String BKS, int capacity, String brand, int status, int price, int year, int trangThai, byte[] img) {
         this.id = id;
         this.categorie_id = categorie_id;
         this.name = name;
@@ -33,6 +41,7 @@ public class Vehicle {
         this.status = status;
         this.price = price;
         this.year = year;
+        this.trangThai = trangThai;
         this.img = img;
     }
 
