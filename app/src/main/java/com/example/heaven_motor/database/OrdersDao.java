@@ -111,9 +111,9 @@ public class OrdersDao {
     }
 
     @SuppressLint("Range")
-    public List<Orders> getDonhang(){
-        String sql ="SELECT * FROM Vehicle JOIN Orders ON Vehicle.id = Orders.vehicle_id WHERE Vehicle.trangthai = 2";
-        return getData(sql);
+    public List<Orders> getDonhang(String id){
+        String sql ="SELECT * FROM Orders WHERE user_id=?";
+        return getData(sql,id);
     }
 
 

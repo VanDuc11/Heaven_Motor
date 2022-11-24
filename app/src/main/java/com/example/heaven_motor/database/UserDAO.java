@@ -36,7 +36,7 @@ public class UserDAO {
             int date = cs.getInt(4);
             String address = cs.getString(5);
             String cccd = cs.getString(6);
-            Users us = new Users(id, name, date, phone, cccd, address, passwork);
+            Users us = new Users();
             ds.add(us);
             cs.moveToNext();
         }
@@ -60,7 +60,7 @@ public class UserDAO {
         }
         return 1;
     }
-    public  boolean update(Users u){
+    public  int update(Users u){
         ContentValues values = new ContentValues();
         values.put("id",u.getId());
         values.put("name",u.getName());
@@ -71,7 +71,10 @@ public class UserDAO {
         values.put("img",u.getImg());
         values.put("passwork",u.getPasswork());
         long kq = db.update("Users",values,"id=?",new String[]{String.valueOf(u.getId())});
-        return (kq > 0);
+        if (kq <= 0){
+            return -1;
+        }
+        return 1;
     }
     public boolean delete_(String id) {
         SQLiteDatabase db = sqLite.getWritableDatabase();

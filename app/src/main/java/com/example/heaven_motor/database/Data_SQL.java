@@ -13,11 +13,7 @@ public class Data_SQL {
             "('Admin','Nguyễn Văn A',18,'Hà Nội','0351582258','27124594','Admin')";
 
 
-    public static final String INSERT_Vehicle = "Insert into Categories(name,brand) values" +
-            "('WAVE2022','SH')," +
-            "('VISION','SH')," +
-            "('AB','SH')," +
-            "('SH2022','SH')";
+
 
 
     public static final String INSERT_Categories = "Insert into Categories(id, name, imager, BKS,capacity ,status,price,brand,year,categorie_id) values" +
