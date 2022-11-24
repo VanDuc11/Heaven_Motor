@@ -83,6 +83,7 @@ public class ThongBaoAdapter extends ArrayAdapter<Orders> {
                     btnXuly.setEnabled(false);
                 }
             });
+
             if (v.getTrangThai() == 2){
                 btnXuly.setText("Đã xác nhận");
                 btnXuly.setEnabled(false);

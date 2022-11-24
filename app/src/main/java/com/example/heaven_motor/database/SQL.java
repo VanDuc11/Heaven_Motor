@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class SQL extends SQLiteOpenHelper {
     public SQL(@Nullable Context context) {
-        super(context, "database.db", null, 17);
+        super(context, "database.db", null, 18);
     }
 
 
@@ -65,7 +65,7 @@ public class SQL extends SQLiteOpenHelper {
 
         //inser data
         db.execSQL(Data_SQL.INSERT_User);
-        db.execSQL(Data_SQL.INSERT_Vehicle);
+//        db.execSQL(Data_SQL.INSERT_Vehicle);
         //db.execSQL(Data_SQL.INSERT_Vehicle);
 
     }

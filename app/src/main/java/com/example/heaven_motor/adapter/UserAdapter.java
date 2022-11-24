@@ -187,7 +187,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     private void opendialogUPDATE(Users user) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialog_update_user, null);
+        View view = inflater.inflate(R.layout.dialog_update_user1, null);
         builder.setView(view);
 
         Dialog dialog = builder.create();
@@ -227,7 +227,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 user.setPhone(phone.getText().toString());
                 user.setAddress(diachi.getText().toString());
 
-                if (userDAO.update(user)) {
+                if (userDAO.update(user)>0) {
                     Toast.makeText(context, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                     // reset du lieu lên rcv

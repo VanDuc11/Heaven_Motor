@@ -35,7 +35,7 @@ public class QlyDonHang_Fragment extends Fragment {
         return v;
     }
     public void loadData(){
-        list = dao.getDonhang();
+        list = dao.getAll();
         adapter = new QLyDHAdapter(getContext(),this,list);
         listView.setAdapter(adapter);
     }

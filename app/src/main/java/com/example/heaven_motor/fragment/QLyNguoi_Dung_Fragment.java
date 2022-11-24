@@ -53,7 +53,7 @@ public class QLyNguoi_Dung_Fragment extends Fragment {
         rvUser.setLayoutManager(layoutManager);
 
         userDAO = new UserDAO(getContext());
-        list = userDAO.getAll_rcv();
+        list = (ArrayList<Users>) userDAO.getAll();
 
         adapter = new UserAdapter(getContext(), list);
         rvUser.setAdapter(adapter);
