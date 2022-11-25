@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/a2"
+    android:background="#FFFFFF"
     >
 
     <LinearLayout
         android:id="@+id/linearLayout4"
         android:layout_width="409dp"
-        android:layout_height="246dp"
+        android:layout_height="206dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -19,13 +19,21 @@
         app:layout_constraintVertical_bias="0.0"
         >
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/lottie"
+            app:lottie_rawRes="@raw/animacionbanner"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"/>
 
         <ImageView
+            android:layout_margin="0dp"
             android:id="@+id/imageView3"
             android:layout_width="206dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/logo" />
+            android:src="@drawable/motologin" />
 
         <TextView
             android:id="@+id/textView4"
@@ -100,12 +108,11 @@
 
                 <Button
                     android:id="@+id/btnLogin"
-
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="397dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
                     android:layout_weight="1"
-                    android:backgroundTint="#0066FF"
                     android:text="login"
                     tools:ignore="TouchTargetSizeCheck" />
 
