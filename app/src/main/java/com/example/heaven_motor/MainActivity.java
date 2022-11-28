@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Intent intent = getIntent();
         String user=  intent.getStringExtra("user");
 
+        navigationView.getMenu().findItem(R.id.DatHang).setChecked(true);
+        pager.setCurrentItem(3);
+
         if (user.equals("Admin")){
             navigationView.getMenu().findItem(R.id.QLLX).setVisible(true);
             navigationView.getMenu().findItem(R.id.QLX).setVisible(true);
@@ -108,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             navigationView.getMenu().findItem(R.id.doanhThu).setVisible(false);
             navigationView.getMenu().findItem(R.id.QLND).setVisible(false);
         }
+
     }
 
     private void onContextMenuClosed() {
