@@ -30,6 +30,9 @@ public class DatHang_Fragment extends Fragment {
     VehicleDAO dao;
     GridView gridView;
     List<Vehicle> list;
+    List<Orders> list1;
+    OrdersDao dao1;
+
     DatHangAdapter adapter;
     EditText tungay, denNgay;
     Calendar calendar ;
@@ -42,7 +45,7 @@ public class DatHang_Fragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_dat_hang, container, false);
         dao = new VehicleDAO(getContext());
-
+        dao1 = new OrdersDao(getContext());
         gridView =v.findViewById(R.id.frag_datHang_grip);
         tungay = v.findViewById(R.id.frag_datHang_edtuNgay);
         denNgay = v.findViewById(R.id.frag_datHang_edDenngay);
@@ -52,61 +55,61 @@ public class DatHang_Fragment extends Fragment {
         tungay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                getTungay();
+                getTungay();
             }
         });
         denNgay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                getDenngay();
+                getDenngay();
             }
         });
         btnTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                loadData2();
+                loadData();
             }
         });
         return v;
     }
-//    public void getTungay(){
-//        calendar = Calendar.getInstance();
-//
-//       int mDay,mMonth,mYear;
-//
-//       mDay  = calendar.get(Calendar.DAY_OF_MONTH);
-//       mMonth  = calendar.get(Calendar.MONDAY);
-//       mYear  = calendar.get(Calendar.YEAR);
-//
-//        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                calendar.set(year,month,dayOfMonth);
-//                tungay.setText(sdf.format(calendar.getTime()));
-//            }
-//        },mYear,mMonth,mDay);
-//        datePickerDialog.show();
-//
-//    }
-//    public void getDenngay(){
-//        calendar = Calendar.getInstance();
-//
-//        int mDay,mMonth,mYear;
-//
-//        mDay  = calendar.get(Calendar.DAY_OF_MONTH);
-//        mMonth  = calendar.get(Calendar.MONDAY);
-//        mYear  = calendar.get(Calendar.YEAR);
-//
-//        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
-//            @Override
-//            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-//                calendar.set(year,month,dayOfMonth);
-//                denNgay.setText(sdf.format(calendar.getTime()));
-//            }
-//        },mYear,mMonth,mDay);
-//        datePickerDialog.show();
-//
-//    }
+    public void getTungay(){
+        calendar = Calendar.getInstance();
+
+       int mDay,mMonth,mYear;
+
+       mDay  = calendar.get(Calendar.DAY_OF_MONTH);
+       mMonth  = calendar.get(Calendar.MONDAY);
+       mYear  = calendar.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                tungay.setText(sdf.format(calendar.getTime()));
+            }
+        },mYear,mMonth,mDay);
+        datePickerDialog.show();
+
+    }
+    public void getDenngay(){
+        calendar = Calendar.getInstance();
+
+        int mDay,mMonth,mYear;
+
+        mDay  = calendar.get(Calendar.DAY_OF_MONTH);
+        mMonth  = calendar.get(Calendar.MONDAY);
+        mYear  = calendar.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                calendar.set(year,month,dayOfMonth);
+                denNgay.setText(sdf.format(calendar.getTime()));
+            }
+        },mYear,mMonth,mDay);
+        datePickerDialog.show();
+
+    }
 //    public void loadData2(){
 //        String date1 = tungay.getText().toString();
 //        String date2 = denNgay.getText().toString();

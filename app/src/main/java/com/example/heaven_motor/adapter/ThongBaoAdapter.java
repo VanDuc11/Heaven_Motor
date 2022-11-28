@@ -74,65 +74,37 @@ public class ThongBaoAdapter extends ArrayAdapter<Orders> {
                     +" "+ v.getName()+" " + v.getCapacity());
 
             tvThoigian.setText("Thời gian thuê: "+ o.getStart_time() +" - "+ o.getEnd_time());
-            btnXuly.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    v.setTrangThai(2);
-                    dao.Update(v);
-                    btnXuly.setText("Đã xác nhận");
-                    btnXuly.setEnabled(false);
-                }
-            });
 
-            if (v.getTrangThai() == 2){
-                btnXuly.setText("Đã xác nhận");
+            if (list.get(position).getId() == o.getId() && v.getTrangThai() == 1){
+                btnXuly.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        v.setTrangThai(2);
+                        dao.Update(v);
+                        btnXuly.setText("Đã xử lý");
+                        btnXuly.setEnabled(false);
+                    }
+                });
+            }
+            if( v.getTrangThai() == 2){
+
+                btnXuly.setText("Đã xử lý");
                 btnXuly.setEnabled(false);
+
             }else if (v.getTrangThai() == 3){
-                tvYc.setText("Yêu cầu nhận xe1");
-                btnXuly.setEnabled(true);
+                tvYc.setText("Yêu cầu trả xe");
                 btnXuly.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         v.setTrangThai(4);
                         dao.Update(v);
-                        btnXuly.setText("Đang xác thực");
+                        btnXuly.setText("Đã xử lý");
                         btnXuly.setEnabled(false);
                     }
                 });
-
-            }else if (v.getTrangThai() == 4){
-                tvYc.setText("Yêu cầu nhận xe2");
-                btnXuly.setText("Duyệt");
-                btnXuly.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        v.setTrangThai(5);
-                        dao.Update(v);
-                        btnXuly.setText("Đang xác thực");
-                        btnXuly.setEnabled(false);
-                    }
-                });
-
-            }else if (v.getTrangThai() == 5){
-                tvYc.setText("Yêu cầu nhận xe3");
-                btnXuly.setText("Đã xác nhận");
-                btnXuly.setEnabled(false);
-            }else if (v.getTrangThai() == 6){
-                tvYc.setText("Yêu cầu trả xe");
-                btnXuly.setText("Duyệt");
-                btnXuly.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        v.setTrangThai(7);
-                        dao.Update(v);
-                        btnXuly.setText("Đã hoàn thành");
-                        btnXuly.setEnabled(false);
-
-                    }
-                });
-            }else if (v.getTrangThai() == 7){
-                btnXuly.setText("Đã hoàn thành");
-                btnXuly.setEnabled(false);
+            }else if ( v.getTrangThai() == 4){
+                v.setTrangThai(0);
+                dao.Update(v);
             }else if (v.getTrangThai() == 0){
                 btnXuly.setText("Đã hoàn thành");
                 btnXuly.setEnabled(false);

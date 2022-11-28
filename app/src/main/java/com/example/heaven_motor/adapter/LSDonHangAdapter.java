@@ -65,58 +65,44 @@ public class LSDonHangAdapter extends ArrayAdapter<Orders> {
 
             Bitmap bitmap = BitmapFactory.decodeByteArray(v.getImg(),0,v.getImg().length);
             img.setImageBitmap(bitmap);
-            tvTenSp.setText(v.getBrand() + " " + v.getName()+ " "+ v.getCapacity());
-            tvMa.setText(v.getName()+"( "+ v.getId()+" - "+v.getBKS()+" )");
+            tvTenSp.setText("Tên xe: "+v.getBrand() + " " + v.getName()+ " "+ v.getCapacity());
+            tvMa.setText("Mã xe: "+"( "+ v.getId()+" - "+v.getBKS()+" )");
 
 
             tvGia.setText(ordersDao.getDate()+ " x " + v.getPrice() +" Tổng thanh toán: "+ o.getTotal());
-            btnXuly.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    v.setTrangThai(3);
-                    dao.Update(v);
-                    tvTT.setText("Đang chờ xử lý");
-                    btnXuly.setText("Đang xử lý");
-                    btnXuly.setEnabled(false);
-                }
-            });
-            if (v.getTrangThai() == 1){ // yêu cầu đặt xe
-                btnXuly.setEnabled(false);
-                tvTT.setText("Đang chờ xử lý");
-                tvTT.setTextColor(Color.RED);
-            }else if (v.getTrangThai() == 2){ //đã xác thực đăt xe
-                btnXuly.setEnabled(true);
-                tvTT.setText("Chờ nhận xe");
-                btnXuly.setText("Nhận xe");
-                tvTT.setTextColor(Color.BLUE);
 
-            }else if (v.getTrangThai() == 4){//đã xác thực nhận xe
-                tvTT.setText("Chờ nhận xe");
-                btnXuly.setEnabled(false);
-            }else if (v.getTrangThai() == 5){
-                tvTT.setText("Nhận xe thành công");
+            if (v.getTrangThai()==1){
                 tvTT.setTextColor(Color.RED);
-                btnXuly.setText("Trả xe");
+                tvTT.setText("Đang xử lý");
+                btnXuly.setEnabled(false);
+            }else if (v.getTrangThai() == 2){
                 btnXuly.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        v.setTrangThai(6);
+                        v.setTrangThai(3);
                         dao.Update(v);
-                        tvTT.setText("Đang trả xe");
-                        tvTT.setTextColor(Color.RED);
-                        btnXuly.setText("Đang xử lý");
-
+                        tvTT.setText("Đang xử lý");
+                        btnXuly.setEnabled(false);
                     }
                 });
-            }else if (v.getTrangThai() == 6){
+                tvTT.setTextColor(Color.RED);
+                tvTT.setText("Đã nhận xe");
+                btnXuly.setText("Trả xe");
+                btnXuly.setEnabled(true);
+            }else if (v.getTrangThai() == 4){
+                tvTT.setTextColor(Color.RED);
+                tvTT.setText("Đã trả xe");
+                btnXuly.setText("Đã trả xe");
                 btnXuly.setEnabled(false);
-            }else if (v.getTrangThai() == 7){
-                v.setTrangThai(0);
-                dao.Update(v);
+
             }else if (v.getTrangThai() == 0){
+                tvTT.setTextColor(Color.RED);
+                tvTT.setText("Đã trả xe");
                 btnXuly.setText("Đã hoàn thành");
                 btnXuly.setEnabled(false);
+
             }
+
         }
 
         return convertView;
