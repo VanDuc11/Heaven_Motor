@@ -69,6 +69,8 @@ public class Sign_up_MainActivity2 extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), Login_MainActivity2.class);
             intent.putExtra("edTenDN",edTenDN.getText().toString());
             intent.putExtra("edPassword",edPassword.getText().toString());
+            intent.putExtra("nameUser",edName.getText().toString());
+
             startActivity(intent);
         }else {
             Toast.makeText(this, "Tạo tài khoản không thành công!", Toast.LENGTH_SHORT).show();
