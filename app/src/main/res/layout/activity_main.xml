@@ -20,7 +20,7 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pagerTrangchu"
             android:layout_width="match_parent"
-            android:layout_height="620dp"
+            android:layout_height="665dp"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView

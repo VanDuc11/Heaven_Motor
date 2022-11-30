@@ -63,18 +63,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu,homeFragment).commit();
                         pager.setAdapter(adapter);
                         pager.setCurrentItem(9);
+                        setTitle("Trang chủ");
 //                        Toast.makeText(MainActivity.this, "lên", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.TinTuc:
                         getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu,tinTucFragment).commit();
                         pager.setAdapter(adapter);
                         pager.setCurrentItem(10);
+                        setTitle("Tin tức");
 //                        Toast.makeText(MainActivity.this, "lên", Toast.LENGTH_SHORT).show();
                         return true;
                 case R.id.toi:
                     getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu,toiFragment).commit();
                     pager.setAdapter(adapter);
                     pager.setCurrentItem(11);
+                    setTitle("Tài khoản");
 //                    Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
                     return true;
             }
