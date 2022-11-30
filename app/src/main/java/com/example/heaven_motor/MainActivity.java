@@ -64,11 +64,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ToiFragment toiFragment = new ToiFragment();
     TinTucFragment tinTucFragment = new TinTucFragment();
 
+    FragmentManager fragmentManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fragmentManager =getSupportFragmentManager();
         navigationView = findViewById(R.id.navtion);
         mHeaderView = navigationView.getHeaderView(0);
         nameUser = mHeaderView.findViewById(R.id.nameUser);
@@ -100,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //imgUser.set
         //Log.d("zzzz", name);
 
+        HomeFragment homeFragment = new HomeFragment();
+        fragmentManager.beginTransaction().replace(R.id.pagerTrangchu, homeFragment).commit();
 
 
         bottomNavigationView = findViewById(R.id.bottom);
@@ -110,18 +115,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     case R.id.home:
                         getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu, homeFragment).commit();
                         pager.setAdapter(adapter);
+                        toolbar.setTitle("Trang Chủ");
                         pager.setCurrentItem(9);
 //                        Toast.makeText(MainActivity.this, "lên", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.TinTuc:
                         getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu, tinTucFragment).commit();
                         pager.setAdapter(adapter);
+                        toolbar.setTitle("Tin Tức");
                         pager.setCurrentItem(10);
 //                        Toast.makeText(MainActivity.this, "lên", Toast.LENGTH_SHORT).show();
                         return true;
                     case R.id.toi:
                         getSupportFragmentManager().beginTransaction().replace(R.id.pagerTrangchu, toiFragment).commit();
                         pager.setAdapter(adapter);
+                        toolbar.setTitle("Người Dùng");
                         pager.setCurrentItem(11);
 //                    Toast.makeText(MainActivity.this, "ok", Toast.LENGTH_SHORT).show();
                         return true;

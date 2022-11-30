@@ -106,6 +106,7 @@ public class VehicleAdapter extends BaseAdapter {
                         intent.putExtra("loai", categoris.getName());
                         context.startActivity(intent);
 
+
                     }
                 });
                 tvXoaXe.setOnClickListener(new View.OnClickListener() {
