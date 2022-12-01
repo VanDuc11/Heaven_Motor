@@ -64,6 +64,7 @@ public class OrdersDao {
             o.setStart_time(c.getString(c.getColumnIndex("start_time")));
             o.setEnd_time(c.getString(c.getColumnIndex("end_time")));
             o.setTotal(c.getInt(c.getColumnIndex("total")));
+            o.setTimethuc(c.getString(c.getColumnIndex("timethuc")));
             o.setPhatsinh(Integer.parseInt(c.getString(c.getColumnIndex("phatsinh"))));
 
             list.add(o);
@@ -116,6 +117,12 @@ public class OrdersDao {
         String sql ="SELECT * FROM Orders WHERE user_id=?";
         return getData(sql,id);
     }
+    public List<Orders> getDon(String id){
+        String sql ="SELECT * FROM Orders WHERE user_id=? AND ";
+        return getData(sql,id);
+    }
+
+
 
 
 }

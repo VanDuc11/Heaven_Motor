@@ -24,7 +24,8 @@
             android:layout_height="100dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/animacionbanner" />
+            app:lottie_rawRes="@raw/animacionbanner"
+            tools:ignore="MissingClass" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:layout_width="120dp"
@@ -32,7 +33,8 @@
             app:lottie_autoPlay="true"
             android:layout_gravity="center"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/motorcycleguy" />
+            app:lottie_rawRes="@raw/motorcycleguy"
+            tools:ignore="MissingClass" />
 
         <TextView
             android:id="@+id/textView4"

@@ -38,14 +38,7 @@ public class LSDonHang_Fragment extends Fragment {
         View v =  inflater.inflate(R.layout.fragment_l_s_don_hang, container, false);
         dao = new OrdersDao(getContext());
         recyclerView  = v.findViewById(R.id.frag_LS_thue_xe_rey);
-        recyclerView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getActivity(),HomeFragment.class);
-                    startActivity(intent);
-                return false;
-            }
-        });
+
         return v;
     }
     public void LoaData(){

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.cardview.widget.CardView;
 
 import com.example.heaven_motor.R;
 import com.example.heaven_motor.database.CategorisDao;
@@ -32,6 +35,7 @@ public class DatHangAdapter extends BaseAdapter {
     List<Vehicle> mList;
     ImageView img;
     TextView tvName,tvGia,tvNam,tvtt,tvHang;
+    CardView card;
     Button btnCT;
     DatHang_Fragment datHang_fragment;
 
@@ -75,6 +79,7 @@ public class DatHangAdapter extends BaseAdapter {
             tvtt = convertView.findViewById(R.id.item_dat_hang_tvtinhtrang);
             tvHang= convertView.findViewById(R.id.item_dat_hang_tvHang);
             btnCT = convertView.findViewById(R.id.item_dat_hang_btnCT);
+            card = convertView.findViewById(R.id.item_dat_hang_card);
 
             final byte[] xeImg = v.getImg();
             Bitmap bitmap = BitmapFactory.decodeByteArray(xeImg,0,xeImg.length);
@@ -93,6 +98,9 @@ public class DatHangAdapter extends BaseAdapter {
                     context.startActivity(intent);
                 }
             });
+//            card.setEnabled(false);
+//            card.setBackgroundColor(Color.GRAY);
+
         }
         return convertView;
     }

@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class SQL extends SQLiteOpenHelper {
     public SQL(@Nullable Context context) {
-        super(context, "database.db", null, 18);
+        super(context, "database.db", null, 1);
     }
 
 

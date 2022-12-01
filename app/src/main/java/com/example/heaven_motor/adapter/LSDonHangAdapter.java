@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -71,11 +72,12 @@ public class LSDonHangAdapter extends ArrayAdapter<Orders> {
 
             tvGia.setText(ordersDao.getDate()+ " x " + v.getPrice() +" Tổng thanh toán: "+ o.getTotal());
 
-            if (v.getTrangThai()==1){
+
+            if (v.getTrangThai() == 1) {
                 tvTT.setTextColor(Color.RED);
                 tvTT.setText("Đang xử lý");
                 btnXuly.setEnabled(false);
-            }else if (v.getTrangThai() == 2){
+            } else if (v.getTrangThai() == 2) {
                 btnXuly.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -89,22 +91,23 @@ public class LSDonHangAdapter extends ArrayAdapter<Orders> {
                 tvTT.setText("Đã nhận xe");
                 btnXuly.setText("Trả xe");
                 btnXuly.setEnabled(true);
-            }else if (v.getTrangThai() == 4){
+            } else if (v.getTrangThai() == 4) {
                 tvTT.setTextColor(Color.RED);
                 tvTT.setText("Đã trả xe");
                 btnXuly.setText("Đã trả xe");
                 btnXuly.setEnabled(false);
 
-            }else if (v.getTrangThai() == 0){
+            } else if (v.getTrangThai() == 0) {
                 tvTT.setTextColor(Color.RED);
                 tvTT.setText("Đã trả xe");
                 btnXuly.setText("Đã hoàn thành");
                 btnXuly.setEnabled(false);
 
             }
-
         }
+
 
         return convertView;
     }
+
 }
