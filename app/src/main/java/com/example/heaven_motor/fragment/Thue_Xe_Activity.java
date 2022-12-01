@@ -29,16 +29,13 @@ import com.example.heaven_motor.MainActivity;
 import com.example.heaven_motor.R;
 import com.example.heaven_motor.database.CategorisDao;
 import com.example.heaven_motor.database.OrdersDao;
-import com.example.heaven_motor.database.ThongKeDao;
 import com.example.heaven_motor.database.VehicleDAO;
 import com.example.heaven_motor.model.Categoris;
 import com.example.heaven_motor.model.Orders;
 import com.example.heaven_motor.model.Vehicle;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class Thue_Xe_Activity extends AppCompatActivity  {
     Intent intent;
@@ -248,7 +245,7 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
         Toast.makeText(Thue_Xe_Activity.this, user, Toast.LENGTH_SHORT).show();
 
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         String dateTime = sdf.format(c.getTime());
         o = new Orders();
