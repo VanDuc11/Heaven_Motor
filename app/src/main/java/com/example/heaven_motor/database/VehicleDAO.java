@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.heaven_motor.fragment.ToiFragment;
 import com.example.heaven_motor.model.Orders;
 import com.example.heaven_motor.model.Vehicle;
 
@@ -122,7 +123,8 @@ public class VehicleDAO {
                 list.get(0);
             }
         }
-
+        ToiFragment toiFragment = new ToiFragment();
         return list.get(0);
     }
+
 }

@@ -109,7 +109,6 @@ public class ThongBaoAdapter extends ArrayAdapter<Orders> {
                 btnXuly.setText("Đã hoàn thành");
                 btnXuly.setEnabled(false);
             }
-
         }
 
         return convertView;
