@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:background="@drawable/bo_goc_custom3"
+
         android:layout_weight="0"
         android:padding="10dp"
         >

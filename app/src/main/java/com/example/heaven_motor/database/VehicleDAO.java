@@ -108,7 +108,6 @@ public class VehicleDAO {
 
     public List<Vehicle> getNgay(String tuNgay,String denNgay){
         String sql = "SELECT * FROM Vehicle JOIN Orders ON Orders.vehicle_id = Vehicle.id WHERE Orders.start_time BETWEEN ? AND ?";
-        db.rawQuery(sql,new String[]{tuNgay,denNgay});
         return getData(sql, new String[]{tuNgay,denNgay});
     }
     @SuppressLint("Range")

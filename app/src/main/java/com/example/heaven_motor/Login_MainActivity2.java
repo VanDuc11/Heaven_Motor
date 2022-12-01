@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.heaven_motor.Sign_Up.Chao_Sign_Up_MainActivity;
 import com.example.heaven_motor.database.UserDAO;
 import com.example.heaven_motor.model.Users;
@@ -24,6 +25,8 @@ public class Login_MainActivity2 extends AppCompatActivity {
     Users users;
     UserDAO userDAO;
     TextView tvTaoTK;
+
+    LottieAnimationView lottie;
     @SuppressLint("MissingInflatedId")
 
     @Override
@@ -38,6 +41,7 @@ public class Login_MainActivity2 extends AppCompatActivity {
         Login = findViewById(R.id.btnLogin);
         tvTaoTK = findViewById(R.id.tvTaoTK);
 
+        lottie = findViewById(R.id.lottie);
 
         SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
         UserName.setText(preferences.getString("USERNAME", ""));

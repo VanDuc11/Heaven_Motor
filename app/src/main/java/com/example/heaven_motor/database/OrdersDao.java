@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.heaven_motor.model.Orders;
+import com.example.heaven_motor.model.Vehicle;
 
 import java.util.ArrayList;
 import java.util.List;

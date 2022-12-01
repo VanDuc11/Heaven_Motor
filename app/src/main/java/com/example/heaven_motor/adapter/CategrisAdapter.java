@@ -43,7 +43,7 @@ public class CategrisAdapter extends RecyclerView.Adapter<CategrisAdapter.Catego
     }
     @Override
     public CategoriViewHoder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(context).inflate(R.layout.item_row_loai_xe,null);
+        View v = LayoutInflater.from(context).inflate(R.layout.item_row_loai_xe,parent,false);
         return new CategoriViewHoder(v);
     }
 
