@@ -9,6 +9,7 @@
     app:cardUseCompatPadding="true"
     app:cardElevation="4dp"
     app:cardCornerRadius="16dp"
+    android:id="@+id/item_dat_hang_card"
     >
 
 

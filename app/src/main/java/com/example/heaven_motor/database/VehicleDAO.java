@@ -101,15 +101,8 @@ public class VehicleDAO {
         String sql = "SELECT * FROM Vehicle ";
         return getData(sql);
     }
-    public List<Vehicle> getThanhPhan(){
-        String sql = "SELECT * FROM Vehicle WHERE trangThai = 0";
-        return getData(sql);
-    }
 
-    public List<Vehicle> getNgay(String tuNgay,String denNgay){
-        String sql = "SELECT * FROM Vehicle JOIN Orders ON Orders.vehicle_id = Vehicle.id WHERE Orders.start_time BETWEEN ? AND ?";
-        return getData(sql, new String[]{tuNgay,denNgay});
-    }
+
     @SuppressLint("Range")
     public String  getLoaixe(){
         String sql = "SELECT Categories.name as name_categories FROM Categories JOIN Vehicle ON Vehicle.categorie_id = Categories.id ";
@@ -125,6 +118,11 @@ public class VehicleDAO {
         }
         ToiFragment toiFragment = new ToiFragment();
         return list.get(0);
+    }
+
+    public List<Vehicle> getNgay(String tuNgay,String denNgay){
+        String sql = "SELECT * FROM Orders JOIN Vehicle ON Vehicle.id = Orders.vehicle_id  WHERE start_time BETWEEN ? AND ?";
+        return getData(sql,new String[]{tuNgay,denNgay});
     }
 
 }

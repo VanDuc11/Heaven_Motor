@@ -13,6 +13,8 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -35,25 +37,25 @@ import com.example.heaven_motor.model.Orders;
 import com.example.heaven_motor.model.Vehicle;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.List;
+
 
 public class Thue_Xe_Activity extends AppCompatActivity  {
     Intent intent;
-    EditText edName,edDungtich,edGia,edLoaiXe;
-    TextView tvMaXe,tvTenXe,
-            tvLoaiXe,tvHang,
-            tvTinhTrang,tvBKS,
-            tvDungTich,tvNam,
-            tvTienThue;
+    TextView tvmaXe, tvTenXe, tvLoaiXe, tvHangXe, tvDungTich, tvGiaThue, tvBKS, tvTrangThai, tvNam, tvThongBao;
     ImageView imageView,img;
+
     Button btnThue;
 
     EditText edtuNgay,edDenNgay;
     Button btnThueXe;
     TextView tvGia;
-    RadioButton rdothue,rdoTra,rdoHuy,rdoDuyen;
-
+    List<Vehicle> list;
     VehicleDAO dao1;
+
     Vehicle v;
     Orders o;
     OrdersDao ordersDao;
@@ -98,10 +100,8 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
         edtuNgay = dialog.findViewById(R.id.dialog_thue_xe_edTungay);
         btnThueXe = dialog.findViewById(R.id.dialog_thue_xe_btnThue);
         img = dialog.findViewById(R.id.dialog_thue_xe_img);
-        rdothue = dialog.findViewById(R.id.dialog_thue_xe_rdoThue);
-        rdoDuyen = dialog.findViewById(R.id.dialog_thue_xe_rdoDuyet);
-        rdoHuy = dialog.findViewById(R.id.dialog_thue_xe_rdoHuy);
-        rdoTra = dialog.findViewById(R.id.dialog_thue_xe_rdoTra);
+        tvThongBao = dialog.findViewById(R.id.dialog_thue_xe_tvThongBao);
+        btnThueXe.setEnabled(false);
         Window window = dialog.getWindow();
         if (window == null) {
             return;
@@ -133,6 +133,43 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
                 tinhNgay();
             }
         });
+        edDenNgay.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String date1 = edtuNgay.getText().toString();
+                String date2 = edDenNgay.getText().toString();
+                List<Orders> list1 = ordersDao.getAll();
+                Toast.makeText(context, ""+list1.size(), Toast.LENGTH_SHORT).show();
+                btnThueXe.setEnabled(true);
+                for (int i = 0; i <list1.size(); i ++){
+
+                    String id = list1.get(i).getVehicle_id();
+                    int stt = dao1.getID(id).getTrangThai();
+                    if (id.equals(v.getId())){
+                        if(stt == 0){
+                            btnThueXe.setEnabled(true);
+                        }else {
+                            if (list1.get(i).getStart_time().equals(date1) || list1.get(i).getEnd_time().equals(date2)){
+                                tvThongBao.setText("Thông báo: Từ ngày " + date1 + " Đến ngày " + date2 +" đã có người thuê \n Vui lòng chọn ngày khác!" );
+                                btnThueXe.setEnabled(false);
+                            }
+                        }
+                    }
+
+                }
+                tinhNgay();
+            }
+        });
         btnThueXe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -147,22 +184,18 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
 
 
     public void anhXa(){
-        edName = findViewById(R.id.frag_thue_xe_edName);
-        edDungtich = findViewById(R.id.frag_thue_xe_edDungtich);
-        edGia = findViewById(R.id.frag_thue_xe_edGia);
-        edLoaiXe = findViewById(R.id.frag_thue_xe_edLoaiXe);
+        tvmaXe = findViewById(R.id.tvMaXe);
+        tvTenXe = findViewById(R.id.tvTenXe);
+        tvLoaiXe = findViewById(R.id.tvLoaiXe);
+        tvHangXe = findViewById(R.id.tvHangXe);
+        tvDungTich = findViewById(R.id.tvDungTich);
+        tvGiaThue = findViewById(R.id.tvTienThue);
+        tvBKS = findViewById(R.id.tvBKS);
+        tvTrangThai = findViewById(R.id.tvTrangThai);
+        tvNam = findViewById(R.id.tvNam);
+        imageView = findViewById(R.id.imgXeChiTiet);
 
-        tvMaXe = findViewById(R.id.frag_thue_xe_tvMaXe);
-        tvTenXe = findViewById(R.id.frag_thue_xe_tvTenXe);
-        tvLoaiXe = findViewById(R.id.frag_thue_xe_tvLoaiXe);
-        tvHang = findViewById(R.id.frag_thue_xe_tvHang);
-        tvDungTich = findViewById(R.id.frag_thue_xe_tvDungTich);
-        tvTinhTrang = findViewById(R.id.frag_thue_xe_tvTinhTrang);
-        tvBKS = findViewById(R.id.frag_thue_xe_tvBKS);
-        tvNam = findViewById(R.id.frag_thue_xe_tvNam);
-        tvTienThue = findViewById(R.id.frag_thue_xe_tvTienThue);
-        imageView = findViewById(R.id.frag_thue_xe_imgView);
-        btnThue = findViewById(R.id.frag_thue_xe_btnThue);
+        btnThue = findViewById(R.id.btnThue);
     }
     public void insert(){
         if (getIntent().hasExtra("id")){
@@ -170,28 +203,21 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
             CategorisDao dao = new CategorisDao(this);
             Categoris c = dao.getID(String.valueOf(v.getCategorie_id()));
 
-            tvMaXe.setText("Mã Xe: "+v.getId());
-            tvTenXe.setText("Tên Xe: "+v.getName());
-            tvLoaiXe.setText("Tên Loại: "+c.getName());
-            tvHang.setText("Nhà Sản Xuất: "+v.getBrand());
-            tvTinhTrang.setText("Tình Trạng: "+v.getStatus()+"%" +"/n"+ "Trạng thái: "+ v.getTrangThai());
-            tvBKS.setText("BKS: "+v.getBKS());
-            tvNam.setText("Năm Sản Xuất: "+v.getBrand());
-            tvTienThue.setText("Giá Thuê: "+v.getPrice()+"VND/Ngày");
-            tvDungTich.setText("Dung Tích: "+v.getCapacity());
+            tvmaXe.setText(v.getId());
+            tvTenXe.setText(v.getName());
+            tvLoaiXe.setText(c.getName());
+            tvHangXe.setText(v.getBrand());
+            tvGiaThue.setText(String.valueOf(v.getPrice())+" Vnd");
+            tvDungTich.setText(String.valueOf(v.getCapacity())+"cc");
+            tvTrangThai.setText(String.valueOf(v.getStatus()));
+            tvBKS.setText(v.getBKS());
+            tvNam.setText(String.valueOf(v.getYear()));
 
-            Bitmap bitmap = BitmapFactory.decodeByteArray(v.getImg(),0,v.getImg().length);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(v.getImg(), 0, v.getImg().length);
             imageView.setImageBitmap(bitmap);
 
-
-            edName.setText(v.getName());
-            edGia.setText(String.valueOf(v.getPrice()));
-            edLoaiXe.setText(c.getName());
-            edDungtich.setText(v.getCapacity()+"cc");
-            edName.setEnabled(false);
-            edGia.setEnabled(false);
-            edLoaiXe.setEnabled(false);
-            edDungtich.setEnabled(false);
+        }else {
+            Toast.makeText(this, "Không có dữ liệu", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -263,8 +289,6 @@ public class Thue_Xe_Activity extends AppCompatActivity  {
         int kq = ordersDao.insert(o);
         if (kq >0){
             Toast.makeText(Thue_Xe_Activity.this, "Đang chờ duyệt", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
         }else {
             Toast.makeText(Thue_Xe_Activity.this, "Không thành công", Toast.LENGTH_SHORT).show();
         }
