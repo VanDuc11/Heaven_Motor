@@ -92,22 +92,23 @@ public class QLyLoaiXe_Fragment extends Fragment {
         btnThem2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                c = new Categoris();
-                c.setName(edTenloai.getText().toString());
-                int kq = dao.insert(c);
+
 
                 if (Validate() < 0) {
                     Toast.makeText(getContext(), "Vui lòng điều đủ thông tin", Toast.LENGTH_SHORT).show();
                 } else {
+                    c = new Categoris();
+                    c.setName(edTenloai.getText().toString());
+                    int kq = dao.insert(c);
                     if (kq > 0) {
                         Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
-
+                        dialog.dismiss();
                     } else {
                         Toast.makeText(getContext(), "Thêm không thành công", Toast.LENGTH_SHORT).show();
                     }
                 }
                 loadData();
-                dialog.dismiss();
+
 
             }
         });

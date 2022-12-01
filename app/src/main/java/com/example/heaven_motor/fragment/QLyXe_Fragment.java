@@ -23,10 +23,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -53,6 +56,7 @@ public class QLyXe_Fragment extends Fragment {
     ImageView imgXe;
     Spinner spinnerLoaiXe, spinnerDungTich, spinnerHangXe, spinnerNam;
     int yc = 123;
+    FrameLayout frameLayout;
 
     ListView listView;
     VehicleAdapter vehicleAdapter;
@@ -95,6 +99,9 @@ public class QLyXe_Fragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        frameLayout = view.findViewById(R.id.fragmentXe);
+        Animation animation1= AnimationUtils.loadAnimation(getContext(),R.anim.downtoup);
+        frameLayout.startAnimation(animation1);
         fab = view.findViewById(R.id.fab);
         listView = view.findViewById(R.id.fragXe_recy);
         dao = new VehicleDAO(getContext());

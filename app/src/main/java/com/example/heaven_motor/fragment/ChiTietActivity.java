@@ -53,9 +53,9 @@ public class ChiTietActivity extends AppCompatActivity {
             tvTenXe.setText(obj.getName());
             tvLoaiXe.setText(intent.getStringExtra("loai"));
             tvHangXe.setText(obj.getBrand());
-            tvGiaThue.setText(String.valueOf(obj.getPrice()));
-            tvDungTich.setText(String.valueOf(obj.getCapacity()));
-            tvTrangThai.setText(String.valueOf(obj.getStatus()));
+            tvGiaThue.setText(String.valueOf(obj.getPrice())+"VNĐ/Ngày");
+            tvDungTich.setText(String.valueOf(obj.getCapacity())+" CC");
+            tvTrangThai.setText(String.valueOf(obj.getStatus()+" %"));
             tvBKS.setText(obj.getBKS());
             tvNam.setText(String.valueOf(obj.getYear()));
             Bitmap bitmap = BitmapFactory.decodeByteArray(obj.getImg(), 0, obj.getImg().length);
