@@ -28,11 +28,11 @@ public class TopMuon_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_top_muon, container, false);
-        lv = v.findViewById(R.id.lvtop);
-        OrdersDao ordersDao = new OrdersDao(getActivity());
-        list = (ArrayList<Top>) ordersDao.getTop();
-        adapter = new TopAdapter(getActivity(), this, list);
-        lv.setAdapter(adapter);
+//        lv = v.findViewById(R.id.lvtop);
+//        OrdersDao ordersDao = new OrdersDao(getActivity());
+//        list = (ArrayList<Top>) ordersDao.getTop();
+//        adapter = new TopAdapter(getActivity(), this, list);
+//        lv.setAdapter(adapter);
 
         return v;
     }

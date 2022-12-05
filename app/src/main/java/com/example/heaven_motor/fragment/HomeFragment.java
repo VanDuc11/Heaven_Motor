@@ -154,7 +154,7 @@ public class HomeFragment extends Fragment {
     }
 
     public void loadData(){
-        list = dao.getThanhPhan();
+        list = dao.getAll();
         adapter = new DatHang_homeAdapter(getContext(),this,list);
         gridView.setAdapter(adapter);
 
@@ -163,14 +163,10 @@ public class HomeFragment extends Fragment {
     private List<Slideshow> getListPhoto() {
         List<Slideshow> list = new ArrayList<>();
 
-        list.add(new Slideshow(R.drawable.slideshow1));
-        list.add(new Slideshow(R.drawable.wave_alpha));
-        list.add(new Slideshow(R.drawable.slideshow1));
-        list.add(new Slideshow(R.drawable.wave_alpha));
-        list.add(new Slideshow(R.drawable.slideshow1));
-        list.add(new Slideshow(R.drawable.wave_alpha));
-        list.add(new Slideshow(R.drawable.slideshow1));
-        list.add(new Slideshow(R.drawable.wave_alpha));
+        list.add(new Slideshow(R.drawable.slide1));
+        list.add(new Slideshow(R.drawable.slide2));
+        list.add(new Slideshow(R.drawable.slide3));
+        list.add(new Slideshow(R.drawable.slide4));
 
         return list;
     }

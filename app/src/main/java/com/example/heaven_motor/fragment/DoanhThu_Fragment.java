@@ -68,7 +68,7 @@ int mYear,mMonth,mDay;
             String tungay = edtungay.getText().toString();
             String denngay = eddenngay.getText().toString();
             OrdersDao ordersDao = new OrdersDao(getActivity());
-           tvdoanhthu.setText("Doanh thu: "+ordersDao.getdoanhthu(tungay,denngay)+" VND");
+           //tvdoanhthu.setText("Doanh thu: "+ordersDao.getdoanhthu(tungay,denngay)+" VND");
         }
     });
         return v;
