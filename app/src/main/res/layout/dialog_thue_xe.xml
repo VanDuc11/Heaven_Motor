@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:padding="10dp"
     android:background="@drawable/bo_goc_custom"
     app:layout_constraintCircleRadius="@dimen/cardview_compat_inset_shadow"
     >
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Thuê Xe"
         android:textSize="30dp"
-
+        android:textStyle="bold"
         android:layout_gravity="center"
         android:gravity="center"/>
 
@@ -75,11 +76,12 @@
         android:textSize="14dp" />
 
     <Button
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:id="@+id/dialog_thue_xe_btnThue"
-        android:layout_width="141dp"
+        android:layout_width="200dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:text="Đặt xe " />
 
 </LinearLayout>

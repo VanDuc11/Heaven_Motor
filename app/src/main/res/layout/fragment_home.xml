@@ -98,7 +98,7 @@
             <GridView
                 android:id="@+id/frag_datHang_grip_home"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="500dp"
                 android:layout_margin="5dp"
                 android:layout_marginEnd="@dimen/cardview_compat_inset_shadow"
                 android:numColumns="2" />
