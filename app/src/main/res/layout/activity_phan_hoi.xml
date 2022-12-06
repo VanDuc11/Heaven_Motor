@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="700dp"
-    android:padding="10dp"
+    android:padding="20dp"
+    android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/img7"
+    android:background="@drawable/bg2"
     tools:context=".fragment.PhanHoiActivity">
    <com.google.android.material.textfield.TextInputLayout
        android:layout_width="match_parent"
@@ -27,6 +28,7 @@
         android:padding="10dp"
         android:orientation="horizontal">
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gửi"
@@ -35,6 +37,7 @@
             android:layout_marginTop="10dp"
             android:layout_weight="1"/>
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:id="@+id/btnHuyPhanHoi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

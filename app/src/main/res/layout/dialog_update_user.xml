@@ -69,6 +69,7 @@
         android:padding="10dp"
         android:orientation="horizontal">
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cập nhật"
@@ -76,12 +77,13 @@
             android:id="@+id/btnCapNhatUser"
             android:layout_weight="1"/>
         <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hủy"
             android:layout_margin="10dp"
             android:id="@+id/btnHuy"
-            android:layout_weight="1"/>
+            android:layout_weight="1.2"/>
     </LinearLayout>
 
 
